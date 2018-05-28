@@ -1,0 +1,57 @@
+{
+    "brand"        : {"type": "ObjectId", "required": true, "ref":"Brands"},
+    "model"        : {"type": "String", "default" : "", "required": true},
+    "reference"    : {"type": "String", "default" : "", "required": true},
+    "serial"       : {"type": "String", "default" : "", "required": true},
+    "wmovement_no"  : {"type": "String", "default" : "", "required": true},
+    "movement_no"  : {"type": "String", "default" : "", "required": true},
+    "with_box"     : {"type": "Boolean", "default" : false},
+    "authenticity" : {"type": "Boolean", "default" : false},
+    "case"         : {
+        "material"  : {"type": "String", "default" : ""},
+        "condition" : {"type": "String", "default" : ""},
+        "diameter"  : {"type": "String", "default" : ""},
+        "bezel"     : {
+            "material"  : {"type": "String", "default" : ""},
+            "condition" : {"type": "String", "default" : ""}
+        },
+        "glass"       : {"type": "String", "default" : ""},
+        "crown" : {
+            "crown" : {"type": "String", "default" : ""},
+            "condition" : {"type": "String", "default" : ""}
+        },
+        "waterproof"  : {"type": "Boolean" , "default": false},
+        "description" : {"type": "String", "default" : ""}
+    },
+    "dial" : {
+        "dial"            : {"type": "String", "default" : ""},
+        "numerals"        : {"type": "String", "default" : ""},
+        "original"           : {"type": "String", "default" : ""},
+        "description"     : {"type": "String", "default" : ""},
+        "dial_condition"     : {"type": "String", "default" : ""}
+    },
+    "strap" : {
+        "bracelet" : {
+            "material"  : {"type": "String", "default" : ""},
+            "type"      : {"type": "String", "default" : ""},
+            "condition" : {"type": "String", "default" : ""}
+
+        },
+        "clasp"     : {
+            "clasp"     : {"type": "String", "default" : ""},
+            "material"  : {"type": "String", "default" : ""},
+            "condition" : {"type": "String", "default" : ""}
+        },
+        "description" : {"type": "String", "default" : ""},
+        "condition" : {"type": "String", "default" : ""}
+    },
+    "caliber" : {
+        "movement"         : {"type": "String", "default" : ""},
+        "caliber"          : {"type": "String", "default" : ""},
+        "power_reserve"    : {"type": "String", "default" : ""},
+        "number_of_jewels" : {"type": "String", "default" : ""},
+        "description"      : {"type": "String", "default" : ""}
+    },
+    "functions" : {"type": "String", "default" : ""},
+    "others"    : {"type": "String", "default" : ""}
+}

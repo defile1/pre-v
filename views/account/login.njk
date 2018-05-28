@@ -1,0 +1,27 @@
+{% extends "site/index.njk" %}
+
+{% block content %}
+    {# {% include "site/templates/page-form.njk" %} #}
+    <div id="page-content" class="container">
+        <div class="grid-container">
+            <h1>Log In</h1>
+            <div id="register-form" class="clearfix">
+                <div class="grid-30 no-padding-left left-content">
+                    <a href="/account/facebook/" class="btn large-btn facebook-btn facebook-register"><span class="fa fa-facebook"></span> &nbsp; Facebook</a>
+                </div>
+                <form id="login" role="form" action="/account/login/" method="post" class="grid-70 no-padding-right right-content">
+                    {% if error  %} <div class="well">{{error}}</div> {% endif %}
+                    <div class="form-field">
+                        <input type="text" name="email" placeholder="Email" />
+                    </div>
+                    <div class="form-field">
+                        <input type="password" name="password" class="form-control" placeholder="Password" />
+                    </div>
+                    <button type="submit" class="btn black-btn large-btn">Login</button>
+                    <a href="/account/forgot-password/" class="ui button right floated">Forgot password?</a>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

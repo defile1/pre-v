@@ -1,0 +1,7 @@
+{
+    "sessionID" : {"type" : "String", "required": true},
+    "title"     : {"type" : "String", "required": true},
+    "message"   : {"type" : "Mixed", "required": true},
+    "type"      : {"type" : "String", "enum": ["info", "error", "success", "warning"], "required": true},
+    "deleted"   : {"type" : "Boolean", "default" : false, "required": true}
+}

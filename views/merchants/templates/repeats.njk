@@ -1,0 +1,150 @@
+{% macro hidden(name, value='', inputClass="") %}
+    <input type="hidden" name="{{ name }}" value="{{value}}" class="{{ inputClass }}" >
+{% endmacro %}
+{% macro input(name, type="text", label="", class="", inputClass="", placeholder= "", prepend="", append="", value=null, id=null) %}
+<div class="field {{ class }}">
+    {% if label %}<label>{{label}}</label>{% endif %}
+    {% if prepend or append %} <div class="ui {{ "right" if append }} labeled input"> {% endif %}
+        {% if prepend %}<div class="ui label {{prepend.class}}">{{prepend.text}}</div>{% endif %}
+        <input  {% if type %} type="{{type}}" {% endif %}
+                {% if name %} name="{{name}}" {% endif %}
+                {% if id %} id="{{id}}" {% endif %}
+                placeholder="{{placeholder}}"
+                class="{{ inputClass }}"
+                {% if value != null %}value="{{value}}"{% endif %}
+        >
+        {% if append %}<div class="ui label {{append.class}}">{{append.text}}</div>{% endif %}
+    {% if prepend or append %} </div> {% endif %}
+</div>
+{% endmacro %}
+
+{% macro select(name, options='', label="", class="", key="key", text="title", multiple=false, dropdown=true, searchable=false, addition=false, transform="select", value=null, inputClass="") %}
+<div class="field {{ class }}">
+    <label>{{label}}</label>
+    <div class="ui selection {{ "multiple" if multiple }} {{ "search selection" if searchable }} {{ "search addition" if addition }} dropdown">
+        <input  name="{{ name }}"
+                type="hidden"
+                {% if inputClass %}class={{inputClass}}{% endif %}
+                {% if transform %} transform="{{ transform }}" {% endif %}
+                {% if value != null %}value="{{value}}"{% endif %}
+        >
+        <div class="default text"></div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {% if not multiple %} <div class="item" data-value="">Please Select</div> {% endif %}
+            {% for opt  in options %}
+                <div class="item" data-value="{{ opt[key] or opt[text] or opt }}">{{ opt[text] or opt}}</div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro textarea(name, value='', label="", class="", inputClass="", rows=4) %}
+<div class="field {{ class }}">
+    {% if label.length %} <label>{{ label }}</label>{% endif %}
+    <textarea class="{{ inputClass }}" name="{{ name }}" colspan="2" rows="{{ rows }}">{{ value }}</textarea>
+</div>
+{% endmacro %}
+
+{% macro tags(name, value='', label="", class="", inputClass="") %}
+<div class="field {{ class }}">
+    <label>
+        {% if label %}
+            <span class="label-text">{{ label }}</span>
+        {% else %}
+            <span class="label-text">&nbsp;</span>
+        {% endif %}
+        <textarea class="tags {{ inputClass }}" transform="comma" name="{{ name }}" colspan="2">{{ value }}</textarea>
+    </label>
+</div>
+{% endmacro %}
+
+{% macro checkbox(name, options='', label="", class="", inputClass="", title="title", value="key", checked=[]) %}
+{% for opt  in options %}
+    <div class="field {{class}}">
+        <div class="ui checkbox">
+          <input name="{{name}}" {{"checked=checked" if opt[value] in checked }}  type="checkbox" tabindex="0" value="{{opt[value]}}" class="hidden {{inputClass}}">
+          <label>{{opt[title]}}</label>
+        </div>
+    </div>
+{% endfor %}
+{% endmacro %}
+
+
+{% macro boolean(name, label="", class="", value="") %}
+<div class="field {{ class }}">
+    <label>{{ label }}</label>
+    <div class="ui toggle checkbox {{ "checked" if value==true }}">
+        <input  type="hidden"
+                name="{{ name }}"
+                value="{{ value }}"
+                >
+        <input  type="checkbox"
+                class="hidden"
+                {% if value==true %} {{ 'checked=checked'  }} {% endif %}
+                value="true"
+                />
+    </div>
+</div>
+{% endmacro %}
+
+{% macro radio(name, options='', label="", class="", key="key", text="title") %}
+<div class="fields {{ class }}">
+    {% if label %}<label>{{ label }}</label>{% endif %}
+    {% for opt  in options %}
+        <div class="field {{ fieldClass }}">
+                <input type="radio" name="{{ name }}" value="{{ opt[key] }}" />
+            <label class="control control--radio">{{ opt[text] }}</label>
+        </div>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+
+
+{% macro formIcon(name, type="text", options='', label="", class="", icon="") %}
+<div class="form-field padding-left-30 no-padding-right {{ class }}">
+    <label>
+        {% if label %}
+            <span class="label-text">{{ label }}</span>
+        {% else %}
+            <span class="label-text">&nbsp;</span>
+        {% endif %}
+        <div class="icon-field">
+            <span class="the-icon">{{ icon }}</span>
+            <div class="the-field">
+                <input type="{{type}}" value="{{ value }}" name="{{ name }}" />
+            </div>
+        </div>
+    </label>
+</div>
+{% endmacro %}
+
+{% macro rate(name, type="text", options='', label="", class="", icon="",value="") %}
+    <div class="field {{ class }}">
+        <label>{{label}}</label>
+        <div class="ui star rating" data-max-rating="5" data-rating="{{value}}"></div>
+        <input name="{{ name }}" type="number" class="ui hidden label" transform="rating" value="{{value}}">
+    </div>
+{% endmacro %}
+
+{% macro countries(name, options=[], label="", class="", multiple=false,transform="select",value=null) %}
+    <div class="field">
+        {% if label %} <label>{{ label }}</label>{% endif %}
+        <div class="ui fluid {{ "multiple" if multiple }} search normal selection dropdown countries">
+            <input  type="hidden"
+                    name="{{name}}"
+                    {%if transform %} transform="{{ transform }}" {% endif %}
+                    {% if value != null %}value="{{value}}"{% endif %}
+            >
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Country</div>
+            <div class="menu">
+                {% for country in options %}
+                    <div class="item" data-value="{{ country.code }}"><i class="{{ country.code | lower }} flag"></i>{{country.name}}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

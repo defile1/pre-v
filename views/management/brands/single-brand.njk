@@ -1,0 +1,98 @@
+{% extends "./../layout.njk" %}
+{% import "./../templates/repeats.njk" as forms %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/dropzone/dropzone.css">
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/public/assets/management/javascript/brands.js"></script>
+{% endblock %}
+{% block content %}
+    <form   class="ui form equal width ajax brands dropzone"
+            name="Brands"
+            method="POST"
+            action="{{ "../" if isNew else "./" }}"
+            autocomplete="off"
+            >
+        {% set brand = Stores.Data.Brands.data[0] %}
+        {% if not isNew %} <input type="hidden" name="_method" value="PUT"> {% endif %}
+        <div class="ui grid">
+            <div class="ui column twelve wide" >
+                <div class="ui segment">
+                    {{ forms.input('title', label="Title", value=brand.title) }}
+                    {{ forms.textarea('description', value=brand.description, label="Description", inputClass="autogrow") }}
+                </div>
+                <div class="ui segment modelsWrapper">
+                    <h2 class="clearfix">Models
+                        <a class="ui right floated right labeled icon button primary addModel">
+                            New
+                            <i class="right add icon "></i>
+                        </a>
+                    </h2>
+                    {% set models = brand.models %}
+                    {% if  not brand.models or brand.models.length === 0 %}
+                        {% set models = [{}] %}
+                    {% endif %}
+                    <div class="models">
+                        {% for model in models %}
+                            <div class="model clearfix ">
+                                <div class="fields">
+                                    {{ forms.input('models[][name]', value=model.name, label="Model Name", inputClass="modelName") }}
+                                    {{ forms.select('models[][references]', value=model.references, addition=true, multiple=true, transform="tags",  label="Model References", inputClass="modelReference") }}
+                                    <div class="ui clearfix">
+                                        <div class="field">
+                                            <label>&nbsp;</label>
+                                            <a class="field removeModel ui right labeled icon negative button clear">
+                                                Remove
+                                                <i class="remove icon"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="column four wide">
+                <div class="ui segment">
+                    <button class="ui primary button labeled icon" type="submit">
+                        <i class="icon edit"></i>
+                        Update
+                    </button>
+                </div>
+                {% if not isNew %}
+                    <div class="ui segment">
+                        <div class="clearfix watch-images">
+                            {% if brand.image %}
+                                <div class="ui image ">
+                                    <img class="full-width main-single-watch-image" src="{{ brand.image.src or Site.noPhoto }}" />
+                                </div>
+                            {% else %}
+                                <p>No Images uploaded</p>
+                            {% endif %}
+                        </div>
+                        <div class="dropzone-previews" data-autoProcessQueue="false" >
+                            <div class="dz-default dz-message"><span>Drop files or click <a href="#">here</a> to upload and press update.</span></div>
+                        </div>
+                    </div>
+                    <div class="ui segment">
+                        <div class="ui modal removeProduct">
+                            <div class="header">You are about to delete this brand.</div>
+                            <div class="content">
+                                <p>Once this brand is deleted you may not retrieve this back again.</p>
+                            </div>
+                            <div class="actions">
+                                <a href="./" method="delete" class="ui button approve negative ajax ">Delete anyway</a>
+                                <div class="ui cancel button">Back to safety</div>
+                            </div>
+                        </div>
+                        <a href="#" class="ui button negative action removeProduct">Remove this product</a>
+                    </div>
+                {% else %}
+                <div class="dz-default dz-message"></div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

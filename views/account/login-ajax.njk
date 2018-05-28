@@ -1,0 +1,21 @@
+<form   class="ui modal login ajax form equal width hidden"
+        method="POST"
+        action="/account/login/"
+        autocomplete="off"
+    >
+    <i class="close icon"></i>
+    <div class="header">Login</div>
+    <div class="content">
+        <div class="">
+            <div class="error ui message"></div>
+            <div class="fields">
+                {{ forms.input('username', label="Username") }}
+                {{ forms.input('password', label="Password", type="password") }}
+            </div>
+        </div>
+    </div>
+    <div class="actions clearfix">
+        <a class="ui button left" href="/account/register/">Register</a>
+        <button type="submit" class="ui positive right button">Login</button>
+    </div>
+</form>

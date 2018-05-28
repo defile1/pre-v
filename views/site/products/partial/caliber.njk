@@ -1,0 +1,22 @@
+<ul class="product-info">
+    <li class="ib clearfix">
+        <strong>Movement</strong>
+        <span>{{ products.caliber.movement | String("humanize")}}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Caliber</strong>
+        <span>{{ products.caliber.caliber | String("humanize")}}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Power reserve</strong>
+        <span>{{ products.caliber.power_reserve | String("humanize")}}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Power reserve</strong>
+        <span>{{ products.caliber.number_of_jewels | String("humanize")}}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Description</strong>
+        <span>{{ products.caliber.description | String("humanize")}}</span>
+    </li>
+</ul>

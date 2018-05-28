@@ -1,0 +1,12 @@
+<div class="ui modal removeProduct">
+    <div class="header">You are about to delete this product.</div>
+    <div class="content">
+        <p>Once this product is deleted you may not retrieve this back again.</p>
+    </div>
+    <div class="actions">
+        <div name="deleted" method="delete" class="ui button approve negative delete deleteProduct">Delete anyway</div>
+        <div class="ui cancel button">Back to safety</div>
+    </div>
+</div>
+{{ forms.hidden('product[deleted]', value=product.deleted, inputClass="deleteProductInput" ) }}
+<a href="#" class="ui button negative action removeProduct">Remove this product</a>

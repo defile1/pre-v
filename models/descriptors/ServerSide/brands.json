@@ -1,0 +1,15 @@
+{
+    "title"       : {"type": "String", "default": "", "required":true},
+    "description" : {"type": "String", "default": "", "required":true},
+    "models"      : [{
+        "name"       : {"type": "String", "default": ""},
+        "references" : {"type": "String", "default": ""}
+    }],
+    "image"       :
+        {
+            "src"     : {"type": "String", "default" : ""},
+            "alt"     : {"type": "String", "default" : ""},
+            "deleted" : {"type": "Boolean" , "default": false}
+        }
+
+}

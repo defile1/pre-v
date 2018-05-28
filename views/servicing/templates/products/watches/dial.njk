@@ -1,0 +1,11 @@
+<div>
+    <h3>Dial</h3>
+    <div class="fields">
+        {{ forms.select('product[dial][dial]', value=products.dial.dial, label="Dial colour", addition="true", options=Stores.Enums.Products.dial.dial) }}
+        {{ forms.select('product[dial][numerals]', value=products.dial.numerals, label="Dial numerals", options=Stores.Enums.Products.dial.numerals, addition=true) }}
+        {{ forms.select('product[dial][original]', value=products.dial.original, label="Dial condition", options=Stores.Enums.Products.dial.original) }}
+    </div>
+    <div class="">
+        {{ forms.textarea('product[dial][description]', value=products.dial.description, label="General condition", class="full-width grid-100", inputClass="autogrow") }}
+    </div>
+</div>

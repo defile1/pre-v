@@ -1,0 +1,19 @@
+{% extends "./layout.njk" %}
+{% block content %}
+    <div class="ui menu">
+        <div class="item">
+            <h1>Your Products</h1>
+        </div>
+        <form method="GET" id="search-form" action="/merchants/products/search/" class="ui form item">
+            {{ forms.input('search', label=false, class="ui icon input", icon="search", placeholder="Search", value=searchQuery) }}
+        </form>
+        <div class="item right">
+            {# <a href="./new/" class="ui button primary">Add product</a> #}
+            {% include "./product-add.njk" %}
+        </div>
+    </div>
+    <div class="ui block clearfix">
+        {% set products = Stores.Data.Products.data %}
+        {% include "./product-items.njk" %}
+    </div>
+{% endblock %}

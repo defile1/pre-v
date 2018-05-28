@@ -1,0 +1,22 @@
+<ul class="product-info">
+    <li class="ib clearfix">
+        <strong>Bracelet Material</strong>
+        <span>{{ products.strap.bracelet.material | FromEnum("Products","strap.material") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Bracelet Type</strong>
+        <span>{{ products.strap.bracelet.type | FromEnum("Products","strap.type") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Clasp</strong>
+        <span>{{ products.strap.clasp.clasp | FromEnum("Products","strap.clasp") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Clasp Material</strong>
+        <span>{{ products.strap.clasp.material | FromEnum("Products","strap.clasp_material") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>General Condition</strong>
+        <span>{{ products.strap.description | String("humanize") }}</span>
+    </li>
+</ul>

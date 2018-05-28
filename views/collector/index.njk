@@ -1,0 +1,69 @@
+{% extends "./layout.njk" %}
+{% block content %}
+    <div class="ui grid">
+        <div class="ui column sixteen wide">
+            <h1>Dashboard</h1>
+            <div class="ui segment">
+                <div class="ui three huge statistics">
+                    <div class="blue statistic">
+                        <div class="value">{{ stats.products or 0 }}</div>
+                        <div class="label">In Your Collection</div>
+                    </div>
+                    <div class="green statistic">
+                        <div class="value">{{ stats.offers or 0 }}</div>
+                        <div class="label">Offers</div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div class="block clearfix">
+                    <h2 class="clearfix">
+                        Recently Added Products
+                        <div class="float right">
+                            {% include "./collector-add.njk" %}
+                            <a href="/collector/products/" class="ui right labeled icon button secondary">
+                                <i class="right eye icon"></i>
+                                View All Products In Collection
+                            </a>
+                        </div>
+                    </h2>
+                    {# {% set products = Stores.Data.Products.data %} #}
+                    {% include "./collector-items.njk" %}
+                </div>
+            </div>
+            <div class="ui segment" style="display: none;">
+                <div class="block clearfix">
+                    <h2 class="clearfix">
+                        Offers Pending
+                        <a href="/collector/offers/" class="ui right floated right labeled icon button secondary">
+                            <i class="right eye icon"></i>
+                            View All Offers
+                        </a>
+                    </h2>
+                    <div class="ui four column grid">
+                        {% for offer in offers -%}
+                            <div class="column">
+                                <a class="ui fluid card" href="#">
+                                    <div class="ui image fluid raised">
+                                        <img class="" src="{{ offer.product.images[0].src }}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header">{{title}}</div>
+                                        <div class="description">Description</div>
+                                    </div>
+                                    <div class="extra content">
+                                        <span class="right floated">
+                                            <span class="ui label">
+                                                <span class="icon">&pound;</span> 500
+                                            </span>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

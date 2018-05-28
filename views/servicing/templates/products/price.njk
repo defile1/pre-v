@@ -1,0 +1,9 @@
+<div class="fields thePrice">
+    {% set priceCLass = "price hidden" if products.prices.POA else "price" %}
+    {{ forms.input('[product[prices][price]', value=products.prices.price, type="number", label="Price", prepend={text:"£"}, class=priceCLass ) }}
+
+</div>
+<div class="two fields">
+    {{ forms.boolean('[product[prices][POA]', value=products.prices.POA, label="POA", options=enums.yesNo, class="poa" )}}
+    {{ forms.boolean('[product[prices][negotiable]', value=products.prices.negotiable, label='Negotiable', options=enums.yesNo )}}
+</div>

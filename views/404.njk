@@ -1,0 +1,17 @@
+{% extends "site/index.njk" %}
+
+{% block content %}
+    <div id="page-content" class="white-bg">
+        <div class="grid-container">
+            <h1>404</h1>
+            <p>Page was not found.</p>
+            {% if error %}
+                <div>{{error}}</div>
+            {% endif %}
+        </div>
+            {% if env == "development" or debug %}
+                <pre>{{error.message}}</pre>
+                <pre>{{error.stack}}</pre>
+            {% endif %}
+    </div>
+{% endblock %}

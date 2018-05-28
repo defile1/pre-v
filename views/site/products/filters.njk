@@ -1,0 +1,78 @@
+<aside id="the-filters" class="">
+    <form   class="form products clearfix"
+            method="GET"
+            action="/products/"
+            data-skipfalsyvaluesfortypes='["text","number"]'
+    >
+        <div id="filter-keywords" class="form-field clearfix">
+            <div class="position-relative">
+                <input type="checkbox" class="hidden " {{ "checked=checked" if query.search }} name="search" value="{{ query.search }}">
+                {{ forms.input('', type="search", value=query.search, placeholder="Rolex yacht master","id"="searchFilter") }}
+                <button class="search-field-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <ul id="filter-options" class="clearfix">
+            {# <li><a href="#filter-keywords">Keywords <i class="fa fa-angle-down" aria-hidden="true"></i></a></li> #}
+            <li><a href="#filter-year">Year <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+            <li><a href="#filter-category">Category <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+            <li><a href="#filter-brands">Brand <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+            <li><a href="#filter-price">Price <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
+        </ul>
+        <input type="hidden" class="infinate" value="false">
+        <input type="hidden" class="totals" value="{{ totals or 0 }}">
+        <input type="hidden" class="perPage" value="{{ perPage }}">
+        <input type="hidden" name="page" value="{{ page or 1 }}">
+        {# <a href="/products/">Clear all</a> #}
+        {# <input type="submit" value="Update"> #}
+        <div id="filter-sections" class="clearfix">
+            <div id="filter-year" class="form-field clearfix checkbox-wrapper range-field sidebar-search filter-section {{ "show-sidebar-search" if query.ygte|length or query.ylte|length }}">
+                <div class="sidebar-search-fields">
+                    <div class="display outer-range-field clearfix">
+                        <span class="gte range-field"></span>
+                        <span class="range-divider">-</span>
+                        <span class="lte range-field"></span>
+                    </div>
+                    <input type="checkbox" class="gte hidden" {{ "checked=checked" if ygte_checked }} name="ygte" value="{{ query.ygte }}">
+                    <input type="checkbox" class="lte hidden" {{ "checked=checked" if ylte_checked }} name="ylte" value="{{ query.ylte }}">
+                    <div    id="year-range"
+                            class="rangeSlider"
+                            data-step="1"
+                            data-min="1"
+                            data-max="2000"
+                            data-values="{{ query.ygte or 1 }},{{ query.ylte or 2000 }}"
+                            ></div>
+                </div>
+            </div>
+            <div id="filter-category" class="form-field clearfix checkbox-wrapper sidebar-search show-sidebar-search filter-section">
+                <div class="sidebar-search-fields clearfix">
+                    {{ forms.checkbox("category[]", options=Stores.Enums.Products.categories, checked=query.category ) }}
+                </div>
+            </div>
+            <div id="filter-brand" class="form-field clearfix checkbox-wrapper sidebar-search filter-section {{ "show-sidebar-search" if query.brands|length }}">
+                <div class="sidebar-search-fields clearfix">
+                    {{ forms.checkbox("brands[]", options=Stores.Enums.Products.brands, checked=query.brands ) }}
+                </div>
+            </div>
+            <div id="filter-price" class="form-field clearfix sidebar-search show-sidebar-search filter-section">
+                <div class="sidebar-search-fields">
+                    <div class="priceDisplay display outer-range-field clearfix">
+                        <span class="pgt gte range-field"></span>
+                        <span class="range-divider">-</span>
+                        <span class="plt lte range-field"></span>
+                    </div>
+                    <input type="checkbox" class="pgt gte hidden" {{ "checked=checked" if gte_checked }} name="gte" value="{{ query.gte }}" >
+                    <input type="checkbox" class="plt lte hidden" {{ "checked=checked" if lte_checked }} name="lte" value="{{ query.lte }}" >
+                    <div
+                        id="slider-range"
+                        class="rangeSlider"
+                        data-min="{{ min }}"
+                        data-max="{{ max }}"
+                        data-currency="true"
+                        data-values="{{ query.gte or 0 }},{{ query.lte or 150000 }}"
+                        ></div>
+                </div>
+            </div>
+            <a class="btn black-btn small-btn right clear-all-btn" href="/products/">Clear All</a>
+        </div>
+    </form>
+</aside>

@@ -1,0 +1,18 @@
+<ul class="product-info">
+    <li class="ib clearfix">
+        <strong>Colour</strong>
+        <span>{{ products.dial.dial | FromEnum("Products","dial.dial") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Numerals</strong>
+        <span>{{ products.dial.numerals | FromEnum("Products","dial.numerals") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Condition</strong>
+        <span>{{ products.dial.original | FromEnum("Products","dial.original") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>General condition</strong>
+        <span>{{ products.dial.description | String("humanize") }}</span>
+    </li>
+</ul>

@@ -1,0 +1,17 @@
+<div>
+    <h3 class="ui header">Watch identification details</h3>
+    <div class="fields">
+        {{ forms.select('product[brand]', value=products.brand.id, label="Brand*", options=brands, key="_id", text="title", inputClass="brands") }}<br />
+        {{ forms.select('product[model]', value=products.model, label="Model Number*", addition=true, inputClass="models") }} <br />
+        {{ forms.select('product[reference]', value=products.reference, label="Reference Number*", addition=true, inputClass="reference") }}<br />
+    </div>
+    <div class="fields">
+        {{ forms.input('product[serial]', value=products.serial, label="Serial Number*") }}
+        {{ forms.input('product[movement_no]', value=products.movement_no, label="Movement Number (Not Caliber No.*)") }}<br />
+        {{ forms.input('product[wmovement_no]', value=products.wmovement_no, label="Watch Movement Number*") }}<br />
+    {# </div> #}
+    {# <div class="fields"> #}
+        {{ forms.boolean('product[with_box]', value=products.with_box, label="With original box") }}
+        {{ forms.boolean('product[authenticity]', value=products.authenticity, label="With certificate") }}
+    </div>
+</div>

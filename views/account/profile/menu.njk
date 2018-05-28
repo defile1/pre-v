@@ -1,0 +1,41 @@
+<ul id="profile-sections" class="">
+  
+    <li>
+        <a class="{{"active" if page == "persons"}} item" href="/account/profile/persons/">
+            Your details
+            <i class="users icon"></i>
+        </a>
+    </li>
+    {% if user.isMerchant %}
+    <li>
+        <a class="item {{"active" if page == "company"}}" href="/account/profile/company/">
+            About company
+            <i class="university icon"></i>
+        </a>
+    </li>
+  <li>
+        <a class="{{"active" if page == "authentication"}} item" href="/account/profile/authentication/">
+            Account Information
+            <i class="key icon"></i>
+        </a>
+    </li>
+      <li>
+        <a class="{{"active" if page == "authentication"}} item" href="/account/profile/my-collection/">
+            My Collection
+            <i class="briefcase icon"></i>
+        </a>
+    </li>
+    {# <li>
+        <a class="item {{"active" if page == "merchants-settings"}}" href="/account/profile/merchants-settings/">
+            Merchants settings
+            <i class="university icon"></i>
+        </a>
+    </li> #}
+    {% endif %}
+    <li>
+        <a class="item {{"active" if page == "link-account"}}" href="/account/profile/link-account/">
+            Link Accounts
+            <i class="fork icon"></i>
+        </a>
+    </li>
+</ul>

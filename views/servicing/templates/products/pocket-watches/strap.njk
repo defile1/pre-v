@@ -1,0 +1,14 @@
+<div>
+    <h3>Bracelet/Strap</h3>
+    <div class="fields">
+        {{ forms.select('product[strap][bracelet][material]', value=products.strap.bracelet.material, label="Bracelet material", options=Stores.Enums.Products.strap.material) }}
+        {{ forms.select('product[strap][bracelet][type]', value=products.strap.bracelet.type, label="Bracelet type", addition="true", options=Stores.Enums.Products.strap.type) }}
+    </div>
+    <div class="fields">
+        {{ forms.select('product[strap][clasp][clasp]', value=products.strap.clasp.clasp, label="Clasp", options=Stores.Enums.Products.strap.clasp) }}
+        {{ forms.select('product[strap][clasp][material]', value=products.strap.clasp.material, label="Clasp material", options=Stores.Enums.Products.strap.clasp_material) }}
+    </div>
+    <div class="fields">
+        {{ forms.textarea('product[strap][description]', value=products.strap.description, label="General condition") }}
+    </div>
+</div>

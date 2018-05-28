@@ -1,0 +1,13 @@
+<div class="ui primary buttons">
+    <a href="/merchants/products/watches/new/" class="ui button">Add new Watch</a>
+    {% if categories.length > 1 %}
+        <div class="ui combo floating dropdown icon button">
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                {% for category in categories %}
+                    <a href="/merchants/products/{{ category | slug }}/new/" class="item"><i class="add icon green"></i> {{ category }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>

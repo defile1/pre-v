@@ -1,0 +1,29 @@
+{% if products and products.length %}
+    <div class="ui stackable cards">
+        {% for product in products %}
+                {% set color =  "green" if product.status == "published" else "red" %}
+                <a class="ui card {{ color }}" href="/merchants/products/{{product.category|slug}}/{{product.id}}/">
+                    <div class="ui image fluid raised">
+                        <span title="status" class="ui bottom left attached label">{{product.status}}</span>
+                        <span title="status" class="ui top left attached label">{{product.category}}</span>
+                        <span class="ui bottom right attached black label tag">
+                            <i class="pound icon"></i>
+                            {% if product.prices.POA === true %}
+                                POA
+                            {% else %}
+                                {{ product.prices.price | NumberFormat }}
+                            {% endif %}
+
+                        </span>
+                        <img src="{{ product.images[0].src or Site.noPhoto }}" />
+                    </div>
+                    <div class="content">
+                        <div class="header">{{ product.title }}</div>
+                        <div class="description">{{ product.description | truncate(30) }}</div>
+                    </div>
+                </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <i>There are no products to display.</i>
+{% endif %}

@@ -1,0 +1,19 @@
+.list-brand a span.no-font {
+  padding: 20px;
+}
+.list-brand a h5 {
+  margin-bottom: 0;
+}
+.list-brand:nth-child(5n+1) {
+  clear: left;
+}
+@media screen and (max-width: 959px) {
+  .list-brand:nth-child(5n+1) {
+    clear: none;
+  }
+}
+@media screen and (max-width: 959px) {
+  .list-brand:nth-child(2n+1) {
+    clear: left;
+  }
+}

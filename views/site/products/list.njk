@@ -1,0 +1,31 @@
+<ul id="productsList" class="watches clearfix">
+    {% if products.length %}
+        {% for product in products %}
+            <li class="watch grid-20 tablet-grid-50 mobile-grid-100">
+                <a href="/{{ product.slug }}" class="clearfix">
+                    {# <span class="watch-image"><img class="full-width" src="{{ product.images and product.images[0].src or Site.noPhoto }}" /></span> #}
+                    <div class="watch-image"><span class="the-watch-image" style="background-image: url('{{ (product.images and product.images[0].src) or Site.noPhoto }}');"></span></div>
+                    <div class="watch-content">
+                        <h3>{{ product.title }}</h3>
+                        <span class="divider"></span>
+                        {# <p>{{ product.description | truncate(70)}}</p> #}
+                        
+                            {% if CurrentUser %}
+
+                        {% if product.prices.POA %}
+                            <span class="watch-price">&pound; POA</span>
+                        {% else %}
+                            <span class="watch-price">&pound;{{ product.prices.price | NumberFormat }}</span>
+                        {% endif %}
+                            {% else %}
+                            <p> Login to view prices </p>
+                            {% endif %}
+                    </div>
+                    {# <span class="btn btn-white btn-small left">View Details</span> #}
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li class="watch grid-25 tablet-grid-50 mobile-grid-50 no-results">No results</li>
+    {% endif %}
+</ul>

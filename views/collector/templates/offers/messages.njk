@@ -1,0 +1,75 @@
+{% import "../../templates/repeats.njk" as forms %}
+{% set offer  = Stores.Data.Offers.data[0] %}
+{% set product  = Stores.Data.Offers.data[0].product %}
+{% set messages = Stores.Data.Offers.data[0].messages %}
+
+<div class="ui horizontal stackable grid list-message-wrapper">
+    <div class="column four wide">
+        {% set products = [product] %}
+        {% include "../../product-items.njk" %}
+    </div>
+    <div class="column twelve wide ui segment">
+        <div class="ui comments">
+            {% set currentUser = Stores.Data.CurrentUser.data[0] %}
+
+            {% for message in messages %}
+                {# {{ (message.from.id or (message.from._id | string) ) }} === {{ currentUser._id  }} #}
+                {% set them = (message.from.id or (message.from._id | string) ) %}
+                {% set me = currentUser._id or currentUser.id %}
+                <div class="comment {{ "them" if me == them }}">
+                    <div class="avatar">
+                        <i class="icon user circular"></i>
+                    </div>
+                    <div class="content">
+                        <span class="author">{{ message.from.persons.name.first }}</span>
+                        <div class="metadata">
+                            <span class="date">{{ message.updatedAt | date("fromNow")  }}</span>
+                        </div>
+                        <div class="text">
+                            <p>{{ message.message | striptags(true) | escape | nl2br  }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <form   class="ui reply form ajax sendMessage basic segment"
+                method="PUT"
+                action="./{{ offer._id }}/"
+                data-id="{{ offer._id }}"
+                autocomplete="off"
+            >
+            {# {{ forms.hidden("", value=offer._id) }} #}
+            <div class="fields equal width">
+                {{ forms.textarea('message', placeholder="Say something...", inputClass="autogrow", rows=1) }}
+                <div>
+                    <div class="field">
+                        <button class="ui right labeled button primary large icon" type="submit">
+                            Send
+                            <i class="send icon "></i>
+                        </button>
+                    </div>
+                </div>
+        </div>
+        </form>
+
+    </div>
+</div>
+
+<style type="text/css">
+
+    #layout .ui.comments .reply.form textarea{height: auto;}
+    #layout .ui.comments {margin-left: auto;}
+    #layout .ui.comments .comment{width: 70%; padding: 1rem; border-radius: 10px; background: cornsilk;}
+    #layout .ui.comments .comment.them{background: aliceblue; margin-left: auto;}
+
+    #layout .list-message-wrapper{
+        margin-top: 0;
+    }
+    #layout .ui.horizontal.segments>.segment.compact{
+        display: block;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+    }
+</style>

@@ -1,0 +1,12 @@
+<div>
+    <h3>Caliber</h3>
+    <div class="fields">
+        {{ forms.input('product[caliber][movement]', value=products.caliber.movement, label="Movement") }}
+        {{ forms.input('product[caliber][caliber]', value=products.caliber.caliber, label="Caliber") }}
+        {{ forms.input('product[caliber][power_reserve]', value=products.caliber.power_reserve, label="Power reserve") }}
+        {{ forms.input('product[caliber][number_of_jewels]', value=products.caliber.number_of_jewels, label="Number of jewels") }}
+    </div>
+    <div class="">
+        {{ forms.textarea('product[caliber][description]', value=products.caliber.description, label="Movement service details", inputClass="autogrow") }}
+    </div>
+</div>

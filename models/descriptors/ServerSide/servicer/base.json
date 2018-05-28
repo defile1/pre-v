@@ -1,0 +1,46 @@
+{
+    "title"       : {"type": "String", "default" : "", "required" : true, "minlength":1, "index": true},
+    "category"    : {
+        "type": "String",
+        "default" : "",
+        "required" : true
+    },
+    "class"  : {"type": "String", "default" : "", "required":true},
+    "description" : {"type": "String", "default" : "", "required": true, "minlength": 1, "index": true},
+    "prices"      : {
+        "price"      : { "type" : "Number" , "required": true, "default": 0 },
+        "negotiable" : { "type" : "Boolean", "default": false },
+        "POA"        : { "type" : "Boolean", "default": false }
+    },
+    "images"       : [
+        {
+            "src"     : {"type": "String", "default" : ""},
+            "alt"     : {"type": "String", "default" : ""},
+            "deleted" : {"type": "Boolean" , "default": false},
+            "sizes": {
+                "thumb": {
+                    "src"     : {"type": "String", "default" : ""},
+                    "alt"     : {"type": "String", "default" : ""}
+                },
+                "medium": {
+                    "src"     : {"type": "String", "default" : ""},
+                    "alt"     : {"type": "String", "default" : ""}
+                },
+                "large": {
+                    "src"     : {"type": "String", "default" : ""},
+                    "alt"     : {"type": "String", "default" : ""}
+                }
+            }
+        }
+    ],
+    "year"         : {"type" : "Number", "required": true, "default": 2000 },
+    "gender"       : {"type": "String", "required": true, "default" : "", "enum": ["male","female","unisex", "other"]},
+
+    "status"      : {"type": "String" , "required": true, "default": "draft", "enum": ["draft", "published", "scheduled"]},
+    "deleted"     : {"type": "Boolean" , "default": false},
+    "owners"      : [{"type": "ObjectId", "ref":"Users"}],
+
+    "stock_no"  : {"type": "String", "default" : ""},
+    "remark"    : {"type": "String", "default" : ""},
+    "model": {"type": "String"}
+}

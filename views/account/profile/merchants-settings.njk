@@ -1,0 +1,19 @@
+<form   method="POST"
+        class="grid-75 no-padding-right right-content ajax tablet-no-padding"
+        action="./"
+>
+    <input type="hidden" name="_method" value="PUT">
+
+    <div class="field-wrapper clearfix">
+        <div class="form-field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+            {{ forms.input('users[colour]', type="colour", value="", label="Colour") }}
+        </div>
+        <div class="form-field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+            {{ forms.input('users[confirm]',type="password" , value="", label="Confirm new Password") }}
+        </div>
+    </div>
+
+    <div class="right">
+        <button type="submit" class="btn submit-btn large-btn">Save</button>
+    </div>
+</form>

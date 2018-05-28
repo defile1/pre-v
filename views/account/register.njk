@@ -1,0 +1,35 @@
+{% extends "site/index.njk" %}
+
+{% block content %}
+    <div id="page-content" class="container">
+        <div class="grid-container">
+            <h1>Register</h1>
+            <p class="lead">Register using facebook or by providing your email and password below.</p>
+            <div id="register-form" class="clearfix">
+                <div class="grid-30 no-padding-left left-content">
+                    <a href="/account/facebook/" class="btn large-btn facebook-btn facebook-register"><span class="fa fa-facebook"></span> &nbsp; Facebook</a>
+                </div>
+                <form   action="/account/register/{{type}}/"
+                        role="form"
+                        method="post"
+                        autocomplete="off"
+                        class="grid-70 no-padding-right right-content"
+                        >
+                        <pre>{{error}}</pre>
+                    <div class="form-field">
+                        <input type="text" class="form-control" name="email" placeholder="Enter email">
+                    </div>
+                    <div class="field-wrapper">
+                        <div class="form-field field-wrapped grid-50 no-padding-right">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-field field-wrapped grid-50 no-padding-right">
+                            <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <button class="btn black-btn large-btn" type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

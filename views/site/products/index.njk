@@ -1,0 +1,48 @@
+{% extends "site/layout.njk" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/list-watches.css">
+{% endblock %}
+{% block content %}
+    <div id="page-content" class="container grid-container">
+        {% include "./filters.njk" %}
+        <div class="">
+            <h2>{{ title }}
+                <small class="right">Products found: {{ totals or 0  }}</small>
+            </h2>
+            {% include "./list.njk" %}
+        </div>
+    </div>
+    <script>
+        // $('.sidebar-search').on('click', 'h3', function(){
+        //     if($(this).parents('.sidebar-search').hasClass('show-sidebar-search')){
+        //         $(this).siblings('.sidebar-search-fields').show();
+        //     }else{
+        //         $(this).siblings('.sidebar-search-fields').slideToggle();
+        //     }
+        //     $(this).find('i').toggleClass('fa-plus fa-minus');
+        // })
+        // .each(function(){
+        //     if($(this).hasClass('show-sidebar-search')){
+        //         $(this).find('h3').trigger('click');
+        //         $(this).removeClass('show-sidebar-search');
+        //     }
+        // })
+        $('#filter-options').on('click', 'a', function(){
+            $(this).parent('li').toggleClass('active-filter');
+            $(this).parent('li').siblings('li').removeClass('active-filter');
+            $(this).find('i').toggleClass('fa-angle-down fa-angle-up');
+            $(this).parent('li').siblings('li').find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+            var target = $(this).attr('href');
+            $(target).toggle();
+            if($(this).parent('li').hasClass('active-filter')){
+                $(target).parents('#filter-sections').show();
+            }else{
+                $(target).parents('#filter-sections').hide();
+            }
+            $(target).siblings('.filter-section').hide();
+            return false;
+        });
+        // var l = $('.show-sidebar-search').length;
+        // if(l!==0) $('#the-filters .form').show();
+    </script>
+{% endblock %}

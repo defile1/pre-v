@@ -1,0 +1,65 @@
+{% macro input(name, value="", placeholder, type="text") %}
+    {% if not placeholder %}
+        {% set placeholder = name[0]|upper + name.slice(1) %}
+    {% endif %}
+    <div class="field">
+        <input
+            type="{{ type }}"
+            name="{{ name }}"
+            value="{{ value | escape }}"
+            placeholder="{{ placeholder }}"
+        />
+    </div>
+{% endmacro %}
+
+
+{% macro select(name, items, selected, all) %}
+    {% if not all %}
+        {% set all = true %}
+    {% endif %}
+    <select name="name" id="">
+        {% if(all==true) %}
+            <option value="*">All</option>
+        {% endif %}
+
+        {% for item, i in items %}
+            {% if selected.indexOf(item)==-1 %}
+                <option value="{{ i }}">{{ item }}</option>
+            {% else %}
+                <option value="{{ i }}" selected>{{ item }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+{% endmacro %}
+
+{% macro watch_images(items, num) %}
+    {% if items %}
+        {% for item in items %}
+            {% if(loop.index <= num) %}
+                <div class="imgWrapper">
+                    <img src="{{ item.src or Site.noPhoto }}" alt="">
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% macro watches(list, altText) %}
+    {% if list.length %}
+        <ul class="watches items tiles">
+            {% for item in list %}
+                <li class="item ibw">
+                    <a href="/merchants/products/{{ item.id }}/">
+                        {{ watch_images(item.images, 1) }}
+                        <div class="details">
+                            <h2>{{ item.title }}</h2>
+                            <p>{{ item.description }}</p>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="padding: 1em; background: #fff; margin: 1em;">{{ altText }}</p>
+    {% endif %}
+{% endmacro %}

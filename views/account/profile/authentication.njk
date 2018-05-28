@@ -1,0 +1,26 @@
+<form   method="POST"
+        class="grid-75 no-padding-right right-content ajax tablet-no-padding"
+        action="./"
+>
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-field">
+        <label>
+            <span class="label-text">Login Email *</span>
+            <input type="text" value="{{ user.email }}" disabled="true">
+            <small>You cannot change your login email address.</small>
+        </label>
+        <!-- ASK V password reset -->
+    </div>
+    <div class="field-wrapper clearfix">
+        <div class="form-field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+            {{ forms.input('users[password]', type="password", value="", label="New Password") }}
+        </div>
+        <div class="form-field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+            {{ forms.input('users[confirm]',type="password" , value="", label="Confirm new Password") }}
+        </div>
+    </div>
+
+    <div class="right">
+        <button type="submit" class="btn submit-btn large-btn">Save</button>
+    </div>
+</form>

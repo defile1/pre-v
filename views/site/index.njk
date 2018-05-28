@@ -1,0 +1,110 @@
+{% extends "site/layout.njk" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/javascript/slick/slick.css">
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/public/assets/site/javascript/slick/slick.min.js"></script>
+{% endblock %}
+{% block content %}
+    <div id="page-content" class="grid-container">
+        {# <p class="p-title">Search over {{ productCount | NumberFormat}} watches from {{ merchantCount | NumberFormat}} sellers around the world</p> #}
+        <form   id="search-form"
+                class="form border"
+                autocomplete="off"
+                action="/products/"
+                method="GET"
+            >
+            <div id="upper-search-form" class="clearfix">
+                <div class="grid-75 tablet-no-padding no-padding-left clearfix">
+                    <div class="grid-75 tablet-grid-75 mobile-no-padding no-padding-left form-field">
+                        <input name="search" placeholder="Rolex yacht master" />
+                    </div>
+                    <div class="grid-25 tablet-grid-25 mobile-no-padding no-padding-right">
+                        <button class="btn-submit black-btn large-btn btn">Search</button>
+                    </div>
+                </div>
+                <div class="grid-25 tablet-no-padding no-padding-right">
+                    <a href="/products/" class="advanced-search-click">Advanced Search <i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div id="advanced-search" class="clearfix">
+                <div class="field-wrapper">
+                    <div class="grid-20 tablet-grid-20 no-padding-right form-field field-wrapped">
+                        <select>
+                            <option>Make/Brand</option>
+                        </select>
+                    </div>
+                    <div class="grid-20 tablet-grid-20 no-padding-right form-field field-wrapped">
+                        <select>
+                            <option>Movement</option>
+                        </select>
+                    </div>
+                    <div class="grid-20 tablet-grid-20 no-padding-right form-field field-wrapped">
+                        <select>
+                            <option>New/Used</option>
+                        </select>
+                    </div>
+                    <div class="grid-20 tablet-grid-20 no-padding-right form-field field-wrapped">
+                        <select>
+                            <option>Gender</option>
+                        </select>
+                    </div>
+                    <div class="grid-20 tablet-grid-20 no-padding-right form-field field-wrapped">
+                        <button class="submit-btn btn-submit-small"><i class="icon-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div id="home-shop" class="clearfix">
+            {% for i in range(0, 3) -%}
+                <div class="list-home-shop-item grid-33 no-padding-right mobile-no-padding">
+                    <div class="inner-list-home-shop-item clearfix border">
+                        <div class="grid-50 tablet-grid-50 mobile-grid-50 no-padding no-font">
+                            <img class="full-width" src="/public/assets/site/images/watch.jpg" />
+                        </div>
+                        <div class="grid-50 tablet-grid-50 mobile-grid-50 item-content">
+                            <h5>Shop Watch</h5>
+                            <p>New in<br/>Today</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div id="home-boxes" class="clearfix">
+            <div class="grid-66 tablet-grid-50 no-padding-right list-home-box mobile-no-padding">
+                <a href="#" class="inner-home-box cover-bg border" style="background-image: url('/public/assets/site/images/chronograph.jpg')">
+                    {# <div class="center-box list-home-box-content">
+                        <h3>Vortic Watches</h3>
+                        <p>Vortic Watches got off the ground<br/>as the brainchi</p>
+                        <span class="btn center-btn btn-small btn-black">Read &amp; Shop</span>
+                    </div> #}
+                </a>
+            </div>
+            <div class="grid-33 tablet-grid-50 no-padding-right list-home-box mobile-no-padding">
+                <div class="inner-home-box cover-bg border" style="background-image: url('/public/assets/site/images/watch-services.jpg')">
+
+                </div>
+            </div>
+            <div class="grid-33 tablet-grid-50 no-padding-right list-home-box mobile-no-padding pocket-watch-home-box">
+                <a href="/products/?page=1&category%5B%5D=PocketWatches" class="inner-home-box cover-bg border" style="background-image: url('/public/assets/site/images/pocket-watch.jpg')">
+                    <div class="center-box list-home-box-content">
+                        <h3>Pocket Watches</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="grid-33 tablet-grid-100 no-padding-right list-home-box mobile-no-padding">
+                <a href="#" class="inner-home-box cover-bg border" style="background-image: url('/public/assets/site/images/blog.jpg')">
+
+                </a>
+            </div>
+            <div class="grid-33 tablet-grid-50 no-padding-right list-home-box mobile-no-padding cycleSection">
+                {% for i in range(1, 5) -%}
+                    <a href="#" class="inner-home-box cover-bg border" style="background-image: url('/public/assets/site/images/parts-{{ i }}.jpg')">
+
+                    </a>
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}

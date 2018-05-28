@@ -1,0 +1,7 @@
+
+<div class="block">
+    <div class="form-wrapper margin-left--30 clearfix">
+        {{ forms.input('product[stock_no]', value=products.stock_no, label="Your stock number", class="full-width") }}
+        {{ forms.textarea('product[remark]', value=products.remark, class="full-width", label="Your remark (THIS FIELD WILL NOT BE SHOWN TO VISITORS):", inputClass="autogrow") }}
+    </div>
+</div>

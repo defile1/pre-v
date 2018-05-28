@@ -1,0 +1,41 @@
+{% extends "./layout.njk" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/css/messages.css">
+{% endblock %}
+{% block js %}
+    <script src="/public/assets/merchants/javascript/messages.js" type="text/javascript"></script>
+{% endblock %}
+{% block content %}
+    <h1>Manage your Offers</h1>
+    <div class="ui grid stackable basic segment">
+        <div id="list-message-senders" class="column four wide ui basic segment">
+            <div class="ui divided link list selection">
+                {% set offers = Stores.Data.Offers.data %}
+                {% if offers.length %}
+                    {% for offer in offers %}
+                        <a href="./{{ offer.id }}/" class="item unread-message selected-message {{ "active" if loop.first }}">
+                            <div class="ui tiny image">
+                                <img class="" src="{{ offer.product.images[0].src }}">
+                            </div>
+                            <div class="content">
+                                <h3 class="header">{{ offer.from.persons.name.first }}</h3>
+                                <span class="meta">
+                                    <span>{{ offer.updatedAt | date("fromNow") }}</span>
+                                </span>
+                            </div>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <div>No offers available check back soon.</div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="column twelve wide">
+            {% if offers.length %}
+                <div id="messages" class="list-message">
+                    {% include "./templates/offers/messages.njk" %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

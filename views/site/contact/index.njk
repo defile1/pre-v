@@ -1,0 +1,46 @@
+{% extends "site/layout.njk" %}
+{% block content %}
+    <div id="page-content" class="container grid-container">
+        <form method="POST">
+            <h1>Contact us</h1>
+            {% if message %} <p class="error">{{ message }}</p> {% endif %}
+            <div class="field-wrapper clearfix">
+                <div class="form-field field-wrapped grid-50 no-padding-right">
+                    <label>
+                        <span class="label-text">Name *</span>
+                        <input type="text" name="name" value="{{ fields.name }}" >
+                    </label>
+                </div>
+                <div class="form-field field-wrapped grid-50 no-padding-right">
+                    <label>
+                        <span class="label-text">Subject *</span>
+                        <input type="text" name="subject" value="{{ fields.subject }}">
+                    </label>
+                </div>
+            </div>
+            <div class="field-wrapper clearfix">
+                <div class="form-field field-wrapped grid-50 no-padding-right">
+                    <label>
+                        <span class="label-text">Email *</span>
+                        <input type="text" name="email" value="{{ fields.email }}" >
+                    </label>
+                </div>
+                <div class="form-field field-wrapped field-wrapped grid-50 no-padding-right">
+                    <label>
+                        <span class="label-text">Telephone</span>
+                        <input type="text" name="tel" value="{{ fields.tel }}" >
+                    </label>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>
+                    <span class="label-text">Message *</span>
+                    <textarea name="message">{{ field.message }}</textarea>
+                </label>
+            </div>
+            <div class="right">
+                <button type="submit" class="btn submit-btn large-btn">Send message</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

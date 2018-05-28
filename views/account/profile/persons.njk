@@ -1,0 +1,58 @@
+<form   method="POST"
+        class="grid-75 no-padding-right right-content form ajax tablet-no-padding"
+        action="./"
+>
+    <input type="hidden" name="_method" value="PUT">
+    <div class="grid-30 tablet-grid-30 mobile-no-padding no-padding-left left-content">
+        <div class="ui centered card dropzone" style="text-align: center;">
+            <div class="ui centered massive image">
+                {% if user.persons.image %}
+                    <div class="ui image ">
+                        <img class="full-width main-single-watch-image" src="{{ user.persons.image.src or Site.noPhoto }}" />
+                    </div>
+                {% else %}
+                    <i class="user icon massive"></i>
+                {% endif %}
+                <div class="dropzone-previews meta" data-autoProcessQueue="true" data-url="../upload/persons/"  ></div>
+            </div>
+            <div class="content">
+                <h4 class="header">Profile Photo</h4>
+
+                <div class="dz-default dz-message"><span>Drop files or click <a href="#" class="btn link no-transform">here</a><br /> to upload and press update.</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="persons-form" class="grid-70 tablet-grid-70 mobile-no-padding no-padding-right right-content">
+        <div class="field-wrapper clearfix">
+            <div class="form-field field field-wrapped grid-33 tablet-grid-33 no-padding-right">
+                {{ forms.select('users[persons][title]', value=user.persons.title, label="Title", options=Stores.Enums.Users.persons.titles) }}
+            </div>
+            <div class="form-field field field-wrapped grid-33 tablet-grid-33 no-padding-right">
+                {{ forms.input('users[persons][name][first]', value=user.persons.name.first, label="First name") }}
+            </div>
+            <div class="form-field field field-wrapped grid-33 tablet-grid-33 no-padding-right">
+                {{ forms.input('users[persons][name][last]', value=user.persons.name.last, label="Last name") }}
+            </div>
+        </div>
+        <div class="field-wrapper clearfix">
+            <div class="form-field field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+                {{ forms.input('users[persons][dob]', value=user.persons.dob, label="DOB", placeholder="DD/MM/YYYY", id="dob") }}
+            </div>
+            <div class="form-field field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+                {{ forms.countries('users[persons][country]', value=user.persons.country, label="Country", options=Stores.Enums.Countries.list) }}
+            </div>
+        </div>
+        <div class="field-wrapper clearfix">
+            <div class="form-field field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+                {{ forms.input('users[persons][email]', value=user.persons.email, label="Email address") }}
+                <small>This email can be different from your login email.</small>
+            </div>
+            <div class="form-field field field-wrapped grid-50 tablet-grid-50 no-padding-right">
+                {{ forms.input('users[persons][tel]', value=user.persons.tel, label="Telephone number") }}
+            </div>
+        </div>
+        <div class="right">
+            <button type="submit" class="btn submit-btn large-btn">Save</button>
+        </div>
+    </div>
+</form>

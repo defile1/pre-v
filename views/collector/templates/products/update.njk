@@ -1,0 +1,38 @@
+    {% if products.createdAt or products.updatedAt %}
+        <div class="ui relaxed horizontal list">
+            {% if products.createdAt %}
+                <div class="item">
+                    <i class="add to calendar icon middle aligned"></i>
+                    <div class="content">
+                        <div class="header">Created</div>
+                        <div class="description">{{ products.createdAt | date('fromNow') }}</div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if products.updatedAt %}
+                <div class="item">
+                    <i class="checked calendar middle aligned icon"></i>
+                    <div class="content">
+                        <div class="header">Updated</div>
+                        <div class="description" name="updatedAt" transform="label">{{ products.updatedAt | date('fromNow') }}</div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="ui divider"></div>
+    <div class="fields">
+        {{ forms.select('product[status]', value=products.status, options=Stores.Enums.Products.status, class="status") }}
+    </div>
+    <div class="">
+        <button class="ui primary button labeled icon" type="submit">
+            <i class="icon edit"></i>
+            Update
+        </button>
+        {% if products.createdAt %}
+            <a href="/{{ products.slug }}/" target="_blank" class="ui right labeled icon button">
+                <i class="right eye icon"></i>
+                Preview
+            </a>
+        {% endif %}
+    </div>

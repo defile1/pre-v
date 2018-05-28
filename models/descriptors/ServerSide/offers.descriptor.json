@@ -1,0 +1,21 @@
+{
+    "product"     : {"type": "$Schema.Types.ObjectId", "ref": "Products"},
+    "from"     : {"type": "$Schema.Types.ObjectId", "ref": "Users"},
+    "to"     : {"type": "$Schema.Types.ObjectId", "ref": "Users"},
+    "messages" : [
+        {
+            "from"     : {"type": "$Schema.Types.ObjectId", "ref": "Users"},
+            "message"  : {"type": "String", "default": "", "minlength" : 1 },
+            "price"    : {"type": "Number", "default": 0 },
+            "shipping" : {"type": "Number", "default": 0 },
+
+            "delivery" : {"type": "String", "default": "" },
+            "validity" : {"type": "Date", "default": "" },
+
+            "status" : {"type": "String", "default": "" },
+            "updatedAt" : {"type": "Date" }
+        }
+    ],
+    "status" : {"type": "String", "default": "" },
+    "deleted" : {"type": "Boolean", "default": false }
+}

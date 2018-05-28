@@ -1,0 +1,12 @@
+<div>
+    <h3>Watch Condition</h3>
+    <div class="fields">
+        {{ forms.rate('product[case][condition]', value=products.case.condition, label="Case", class="full-width") }}
+        {{ forms.rate('product[case][bezel][condition]', value=products.case.bezel.condition, label="Bezel", class="full-width") }}
+        {{ forms.rate('product[case][crown][condition]', value=products.case.crown.condition, label="Crown", class="full-width") }}
+        {{ forms.rate('product[dial][dial_condition]', value=products.dial.dial_condition, label="Dial", class="full-width") }}
+        {{ forms.rate('product[strap][bracelet][condition]', value=products.strap.bracelet.condition, label="Bracelet", class="full-width") }}
+        {{ forms.rate('product[strap][clasp][condition]', value=products.strap.clasp.condition, label="Clasp", class="full-width") }}
+        {{ forms.rate('product[strap][condition]', value=products.strap.condition, label="Strap", class="full-width") }}
+    </div>
+</div>

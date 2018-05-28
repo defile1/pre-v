@@ -1,0 +1,106 @@
+{% extends "../layout.njk" %}
+{% block content %}
+
+    <pre>{{ user | dump | pretty }}</pre>
+
+{#     <form   class="hide form bind flex-box"
+            name="user"
+            method="PUT"
+            action="./"
+            autocomplete="off"
+        >
+        <div class="block">
+            <h3>Contact Information</h3>
+            <div class="form-wrapper margin-left--30 clearfix">
+                <div class="form-field grid-33 padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Title</span>
+                        <select name="user.title">
+                            <option>Mr</option>
+                            <option>Mrs</option>
+                            <option>Miss</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">First Name</span>
+                        <input type="text" name="user.name.first" />
+                    </label>
+                </div>
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Last Name</span>
+                        <input type="text" name="user.name.last" />
+                    </label>
+                </div>
+            </div>
+            <div class="form-wrapper margin-left--30 clearfix">
+                <div class="form-field grid-33 padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">DOB</span>
+                        <input type="text" name="user.dob" placeholder="DD/MM/YYYY"  >
+                    </label>
+                </div>
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Email Address</span>
+                        <input type="text" name="user.email" />
+                    </label>
+                </div>
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Telephone Number</span>
+                        <input type="text" name="user.tel" />
+                    </label>
+                </div>
+            </div>
+            <div class="form-wrapper margin-left--30 clearfix">
+                <div class="form-field grid-50 padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Password</span>
+                        <input type="password" name="user.password">
+                    </label>
+                </div>
+                <div class="form-field grid-50 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Confirm Password</span>
+                        <input type="password" name="user.confpassword" />
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <h3>Company Information</h3>
+            <div class="form-wrapper margin-left--30 clearfix">
+                <div class="form-field grid-100 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Company Name</span>
+                        <input type="text" name="user.company.name" />
+                    </label>
+                </div>
+            </div>
+            <div class="form-wrapper margin-left--30 clearfix">
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Email Address</span>
+                        <input type="text" name="email" />
+                    </label>
+                </div>
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Telephone Number</span>
+                        <input type="text" name="phone" />
+                    </label>
+                </div>
+                <div class="form-field grid-33 no-padding-left padding-left-30 no-padding-right">
+                    <label>
+                        <span class="label-text">Website</span>
+                        <input type="text" name="website" />
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- <button class="btn black-btn small-btn">Update</button> -->
+    </form> #}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "site/layout.njk" %}
+{% block content %}
+    <div id="page-content" class="grid-container">
+        <aside id="sidebar">
+            filters go here
+        </aside>
+        <section id="results">
+            <ul>
+                {% for watch in watches %}
+                    <li>
+                        <h2>{{ watch.title }}</h2>
+                        <img src="{{ watch.images[0].src }}">
+
+                        <a href="/{{ watch.slug }}">{{ watch.price }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+<style type="text/css">
+    #results ul { vertical-align: top; display: flex; }
+    #results ul li {display: inline-block; margin-right: 10px;}
+    #results ul li img{ max-width: 100px; }
+
+</style>
+{% endblock %}

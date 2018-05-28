@@ -1,0 +1,42 @@
+{% extends "./layout.njk" %}
+{% set products = Stores.Data.Products.data %}
+{% block content %}
+    <div class="ui grid">
+            <div class="ui column sixteen wide">
+                <h1>Dashboard</h1>
+                <div class="ui segment">
+                    <div class="ui three huge statistics">
+                        <div class="purple statistic">
+                            <div class="value">{{ (AllBrands or 0) | NumberFormat }}</div>
+                            <div class="label">Brands in total</div>
+                        </div>
+                        <div class="blue statistic">
+                            <div class="value">{{ (AllUsers or 0) | NumberFormat }}</div>
+                            <div class="label">Users in total</div>
+                        </div>
+                        <div class="green statistic">
+                            <div class="value">{{ AllProducts.length | NumberFormat }}</div>
+                            <div class="label">Products in total</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui basic segment">
+                    <div class="block clearfix">
+                        <h2 class="clearfix">
+                            Recently Added Products
+                            <div class="float right">
+                                <a href="/management/products/" class="ui right labeled icon button secondary">
+                                    <i class="right eye icon"></i>
+                                    View All Products
+                                </a>
+                            </div>
+                        </h2>
+                        <div class="ui block clearfix">
+                            {# {% set products = Stores.Data.Products.data %} #}
+                            {% include "./product-items.njk" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

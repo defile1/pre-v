@@ -1,0 +1,30 @@
+<ul class="product-info">
+    <li class="ib clearfix">
+        <strong>Material</strong>
+        <span>{{ products.case.material | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Diameter (MM)</strong>
+        <span>{{ products.case.diameter | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Bezel Material</strong>
+        <span>{{ products.case.bezel.material | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Glass</strong>
+        <span>{{ products.case.glass | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Crown</strong>
+        <span>{{ products.case.crown.crown | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Waterproof</strong>
+        <span><i class="fa fa-fw fa-{{ "check" if products.case.waterproof else "close"}}"></i>{{ products.case.waterproof | FromBoolean }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Description</strong>
+        <span>{{ products.case.description | String("humanize") }}</span>
+    </li>
+</ul>

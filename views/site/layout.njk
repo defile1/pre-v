@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="google-site-verification" content="ouNw8saWQeWE1iVYGOBJAXDB7Zs_qbIJG23Qyk3b7co" />
+    {% import "./templates/repeats.njk" as forms %}
+
+    <title>Pre 2000</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    {# <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/semantic/semantic.min.css"> #}
+
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/resets.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/unsemantic.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/public/assets/site/_mix/fontello/css/font-pree5.css"> -->
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/_mix/fontello/css/aw.css">
+    <link rel='stylesheet' id='ut-fontawesome-css'  href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?e9dfc4" type='text/css' media='all' />
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/javascript/jquery/jquery-ui-1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:700" rel="stylesheet">
+
+    {% block css %}{% endblock %}
+    <script type="text/javascript" src="/public/assets/site/javascript/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/jquery/touch-punch.min.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/nunjucks/nunjucks.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/_mix/semantic/semantic.min.js"></script>
+    {# // <script type="text/javascript" src="//d1l4stvdmqmdzl.cloudfront.net/4.0.2/mongoose.min.js"></script> #}
+
+    {% block js %}{% endblock %}
+    <script type="text/javascript" src="/public/assets/management/javascript/serializeJSON.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/ajax.js"></script>
+    {# // <script type="text/javascript" src="/public/assets/merchants/javascript/stores.js"></script> #}
+    <script type="text/javascript" src="/public/assets/merchants/javascript/site.js"></script>
+    {# <script type="text/javascript" src="/public/assets/merchants/javascript/notifications.js"></script> #}
+
+    <script type="text/javascript" src="/public/assets/site/javascript/nunjucks.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/tabs.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/dropdown.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/notifications.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/other.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/products.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-96355777-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+    <header id="header">
+        <div class="grid-container position-relative">
+            <a href="#" class="menu-icon position-relative">
+                <span class="inner-menu-icon"></span>
+            </a>
+            <nav id="main-menu" class="left position-absolute vertical-align vertical-align">
+                <ul class="clearfix">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/products/brands/">Brands</a></li> 
+                {% if CurrentUser %}
+                    <li>Hello</li>
+                    <li class="has-drop-down">
+                        <a title="account" href="#" class="drop-down contexted">
+                            <strong>{{CurrentUser.persons.name.first}}</strong>
+                            <i class="icon-down-open"></i>
+                        </a>
+                        <ul class="drop-down-menu context">
+                            {% if CurrentUser.isAdmin %}
+                                <li><a class="" href="/management/" title="Manage Admin">Manage Admin <i class="icon-key"></i></a></li>
+                            {% endif %}
+                            {% if CurrentUser.isMerchant %}
+                                <li><a class="" href="/merchants/" title="Access Merchant Account">Access Merchant Account <i class="icon-tag"></i></a></li>
+                            {% endif %}
+                            {% if CurrentUser.isCollector %}
+                                <li><a class="" href="/collector/" title="Access Your Collection">Access Your Collection <i class="icon-tag"></i></a></li>
+                            {% endif %}
+                            {% if CurrentUser.isServicer %}
+                                <li><a class="" href="/servicer/" title="Access Servicing Panel">Access Servicing Panel<i class="icon-tag"></i></a></li>
+                            {% endif %}
+                            <li><a class="" href="/account/profile/" title="Manage Account">Manage Account <i class="icon-user"></i></a></li>
+                            <li><a class="" href="/account/logout/" title="Logout">Logout <i class="icon-logout"></i></a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="/account/login/">Login</a></li>
+                    <li><a href="/account/register/">Register</a></li>
+                {% endif %}
+                </ul>
+            </nav>
+            <a id="logo" class="no-font" href="/" title="Pre 2000" alt="Pre 2000"><img src="/public/assets/site/images/logo.png"></a>
+        
+        </div>
+    </header>
+    <section id="main-content">
+        {% block content %}{% endblock %}
+    </section>
+    <footer id="footer" class="white-bg">
+        <div class="grid-container">
+            <nav class="grid-33 tablet-grid-50 no-padding-left mobile-no-padding footer-block">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="/contact/">Help &amp; Contact Us</a></li>
+                    <li><a href="/faq/">FAQs</a></li>
+                    <li><a href="/terms/">Terms &amp; Conditions</a></li>
+                    <li><a href="/privacy/">Privacy &amp; Cookie Policy</a></li>
+                </ul>
+            </nav>
+            <nav class="grid-33 tablet-grid-50 no-padding-left mobile-no-padding footer-block">
+                <h3>About Pre 2000</h3>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                                    </ul>
+            </nav>
+            <div class="grid-33 tablet-grid-100 no-padding-right mobile-no-padding footer-block">
+                {# <div style="display: none">
+                    <h3>Newsletter</h3>
+                    <form class="clearfix">
+                        <div class="grid-70 mobile-grid-65 no-padding-left form-field">
+                            <input type="text" placeholder="Email Address" name="email" />
+                        </div>
+                        <div class="grid-30 mobile-grid-35 no-padding-right">
+                            <button class="btn-submit"><i class="icon-right-open"></i></button>
+                        </div>
+                    </form>
+                </div> #}
+                <h3>Follow Us</h3>
+                <ul id="social-links" class="clearfix">
+                    <li><a target="_blank" href="https://www.facebook.com/Pre2000/" class="fa fa-facebook"></a></li>
+                    <li><a target="_blank" href="https://twitter.com/pre_2000/" class="fa fa-twitter"></a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/pre_2000/" class="fa fa-instagram"></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    {% include "account/login-ajax.njk" %}
+    {% include "./clones.njk" %}
+
+    <script type="text/javascript">
+        try{
+            Stores = {{(Stores or {}) | dump | safe }}
+        }catch(e){}
+    </script>
+
+</body>
+</html>

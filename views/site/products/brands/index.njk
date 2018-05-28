@@ -1,0 +1,25 @@
+{% extends "site/layout.njk" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/list-watches.css">
+{% endblock %}
+{% block content %}
+    <div id="page-content" class="container grid-container">
+        <h2>Brands</h2>
+        {% if brands.length %}
+            <ul class="watches clearfix">
+                {% for brand in brands %}
+                    <li class="watch grid-25 tablet-grid-50 mobile-grid-50">
+                        <a href="{{ brand.title | slug  }}/" class="clearfix">
+                            <div class="watch-image"><span class="the-watch-image" style="background-image: url('{{ (brand.image.src) or Site.noPhoto }}');"></span></div>
+                            <div class="watch-content">
+                                <h3>{{brand.title}}</h3>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div class="no-results">No results</div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "site/index.njk" %}
+
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/dropzone/dropzone.css">
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript" src="/public/assets/merchants/javascript/dropzone.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/dropzone/dropzone.js"></script>
+    <script type="text/javascript" src="/public/assets/site/javascript/profile.js"></script>
+    <script type="text/javascript"> Dropzone.autoDiscover = false; </script>
+
+{% endblock %}
+
+{% block content %}
+{# <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css --> #}
+
+    <div id="page-content" class="container grid-container">
+        <div id="account-profile-menu" class="grid-25 tablet-no-padding no-padding-left left-content">{% include "./profile/menu.njk" %}</div>
+        {% include "./profile/"+ page +".njk" %}
+    </div>
+    <script type="text/javascript">window.location.hash=""</script>
+{% endblock %}

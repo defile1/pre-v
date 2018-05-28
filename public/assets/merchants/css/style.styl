@@ -1,0 +1,42 @@
+$mobile = 767px
+$tablet = 959px
+
+#layout > .mainWrapper .main-container
+    overflow: auto
+    overflow-x: scroll
+.ui.horizontal.segments>.segment
+    min-width: 40%
+.ui.segments
+.ui.segment
+    transition all 0.5s
+.ui.image.tinyImages
+    .ui.attached.label .icon
+        margin 0
+    img
+        margin 0
+.ui.horizontal.segments
+.ui.horizontal.segments>.segment
+    border none
+.image .ui.corner.label
+    display none
+.ui-effects-transfer
+    border: 1px solid #2185D0
+    z-index: 99
+
+.ui.floating.message.notification
+    position: absolute
+    bottom: 20px
+    right: 20px
+    z-index: 99
+
+.hidden
+    display none
+@media screen and (max-width: $mobile)
+    .hideMobile
+        display none
+    .right.sidebar.hideMobile
+        transform: translate3d(100%,0,0)!important
+        display block
+    .left.sidebar.hideMobile
+        display block
+        transform: translate3d(-100%,0,0)!important

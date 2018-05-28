@@ -1,0 +1,9 @@
+{
+    "persons" : {
+        "titles" : [
+            {"key":"mr", "title": "Mr"},
+            {"key":"mrs", "title": "Mrs"},
+            {"key":"miss", "title": "Miss"}
+        ]
+    }
+}

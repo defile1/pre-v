@@ -1,0 +1,96 @@
+{
+    "persons"   : {
+        "title"    : {"type": "String"},
+        "name"       : {
+            "first": {"type": "String", "required": true},
+            "other": {"type": "String"},
+            "last" : {"type": "String", "required": true}
+        },
+        "tel" : {"type" : "String"},
+        "email"   : {
+            "type" : "String",
+            "trim" : true,
+            "lowercase" : true,
+            "unique" : true,
+            "required" : "Email address is required"
+        },
+        "dob"     : {"type": "String"},
+        "add1"    : {"type": "String"},
+        "add2"    : {"type": "String"},
+        "add3"    : {"type": "String"},
+        "add4"    : {"type": "String"},
+        "add5"    : {"type": "String"},
+        "postcode": {"type": "String"},
+        "country": {"type": "String", "default": "GB"},
+        "image"       :{
+            "src"     : {"type": "String", "default" : ""},
+            "alt"     : {"type": "String", "default" : ""},
+            "deleted" : {"type": "Boolean" , "default": false}
+        }
+    },
+    "roles" : [{"type": "String", "default": "mmUser" }],
+    "companies" : {
+        "name"    : {"type": "String"},
+        "website" : {"type": "String"},
+        "tel" : {"type" : "String"},
+        "email"   : {
+            "type" : "String",
+            "trim" : true,
+            "lowercase" : true
+        },
+        "image"       :{
+            "src"     : {"type": "String", "default" : ""},
+            "alt"     : {"type": "String", "default" : ""},
+            "deleted" : {"type": "Boolean" , "default": false}
+        },
+        "opening" : {
+            "monday": {"from": {"type":"String", "default": "09:00"}, "to": {"type":"String", "default": "17:00"} },
+            "tuesday": {"from": {"type":"String", "default": "09:00"}, "to": {"type":"String", "default": "17:00"} },
+            "wednesday": {"from": {"type":"String", "default": "09:00"}, "to": {"type":"String", "default": "17:00"} },
+            "thursday": {"from": {"type":"String", "default": "09:00"}, "to": {"type":"String", "default": "17:00"} },
+            "friday": {"from": {"type":"String", "default": "09:00"}, "to": {"type":"String", "default": "17:00"} },
+
+            "saturday": {"from": {"type":"String", "default": "closed"}, "to": {"type":"String", "default": "closed"} },
+            "sunday": {"from": {"type":"String", "default": "closed"}, "to": {"type":"String", "default": "closed"} }
+        }
+    },
+    "email"     : {
+        "type": "String",
+        "default" : "",
+        "trim" : true,
+        "lowercase" : true,
+        "unique": true,
+        "required" : "Email is required"
+    },
+    "forgotPassword": {
+        "token" : "String",
+        "date" : "Date",
+        "tries" : "Number"
+    },
+    "hash"      : {"type": "String", "default" : ""},
+    "salt"      : {"type": "String", "default" : ""},
+    "deleted"   : {"type": "Boolean" , "default": false},
+
+    "local"            : {
+        "email"        : "String",
+        "password"     : "String"
+    },
+    "facebook"         : {
+        "id"           : "String",
+        "token"        : "String",
+        "email"        : "String",
+        "name"         : "String"
+    },
+    "twitter"          : {
+        "id"           : "String",
+        "token"        : "String",
+        "displayName"  : "String",
+        "username"     : "String"
+    },
+    "google"           : {
+        "id"           : "String",
+        "token"        : "String",
+        "email"        : "String",
+        "name"         : "String"
+    }
+}

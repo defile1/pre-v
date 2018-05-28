@@ -1,0 +1,15 @@
+{% extends "./layout.njk" %}
+{% block content %}
+    <div class="ui menu">
+        <div class="item">
+            <h1>Your Products</h1>
+        </div>
+        {# <form method="post" id="search-form" action="/" class="ui form item"> #}
+            {# {{ forms.input('search', label=false, class="ui icon input", icon="search") }} #}
+        {# </form> #}
+    </div>
+    <div class="ui block clearfix">
+        {% set products = Stores.Data.Products.data %}
+        {% include "./product-items.njk" %}
+    </div>
+{% endblock %}

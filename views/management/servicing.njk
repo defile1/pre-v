@@ -1,0 +1,33 @@
+{% extends "./layout.njk" %}
+{% block css %}<link rel="stylesheet" type="text/css" href="/public/assets/management/css/brands.css">{% endblock %}
+{% block content %}
+    <div class="ui menu">
+        <div class="item">
+            <u><h1>All Servicing Users</h1></u>
+        </div>
+    </div>
+    <div class="ui celled list">
+        {% for user in users %}
+            <div class="item">
+                <div class="right floated content">
+                    {% if not user.isServicer and not user.deleted %}<a href="./make-servicing/{{ user.id }}/" class="ui button orange">Make Servicing</a> {% endif %}
+                    {% if user.isServicer and not user.deleted %}<a href="./remove-servicing/{{ user.id }}/" class="ui button blue">Make normal user</a> {% endif %}
+                    </a>
+                </div>
+                {% if user.isFacebook %}
+                    <i class="large blue facebook  middle aligned  icon"></i>
+                {% else %}
+                    <i class="large user middle aligned icon"></i>
+                {% endif %}
+                <div class="content">
+                    <a class="header" href="./{{user.id}}/">{{user.persons.name.first or "Unknown"}}
+                        {{user.persons.name.last}}, {{user.email}} || {{ user.id }}
+                    </a>
+                    <div class="description">
+                        <div>Status: <span class="ui label {{ "red" if user.deleted else "green" }}">{{ "Disabled" if user.deleted else "Enabled" }}</span></div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

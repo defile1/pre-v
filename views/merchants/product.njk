@@ -1,0 +1,60 @@
+{% if isFromAdmin %}
+    {% extends "../management/layout.njk" %}
+{% else %}
+    {% extends "./layout.njk" %}
+{% endif %}
+{% import "./templates/repeats.njk" as forms %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/dropzone/dropzone.css">
+{% endblock %}
+{% block jsready %}
+    <script type="text/javascript" src="/public/assets/merchants/javascript/product.js"></script>
+{% endblock %}
+{% block content %}
+    <form   class="ui form equal width ajax productForm"
+            name="Products"
+            method="POST"
+            action="./"
+            autocomplete="off"
+            >
+        {% set products = product %}
+        <input type="hidden" name="_method" value="PUT">
+        <div class="ui grid">
+            <div class="ui column eleven wide" >
+                <h1 class="clearfix">New Product
+                    <a href="../new/" class="ui right floated right labeled icon button primary">
+                        New
+                        <i class="right add icon "></i>
+                    </a>
+                </h1>
+                <div class="ui segment">{% include "./templates/products/standard.njk" %}</div>
+                <div class="products-category">
+                    {% if not products.category %}
+
+                    {% elif products.category | slug == "accessories" %}
+                        {% include "./templates/products/accessories/index.njk" %}
+                    {% elif products.category | slug == "clocks" %}
+                        {% include "./templates/products/clocks/index.njk" %}
+                    {% elif products.category | slug == "parts" %}
+                        {% include "./templates/products/parts/index.njk" %}
+                    {% elif products.category | slug == "pocket-watches" %}
+                        {% include "./templates/products/pocket-watches/index.njk" %}
+                    {% elif products.category | slug == "watches" %}
+                        {% include "./templates/products/watches/index.njk" %}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="column five wide">
+                <div class="ui segment updateSegment">{% include "./templates/products/update.njk" %}</div>
+                <div class="ui segment">{% include "./templates/products/price.njk" %}</div>
+                {% if not isNew %} <div class="ui segment image-segment dropzone">{% include "./templates/products/images.njk" %}</div> {% endif %}
+                <div class="ui segment">{% include "./templates/products/references.njk" %}</div>
+                {% if products.createdAt %}
+                    <div class="ui segment">{% include "./templates/products/removeProduct.njk" %}</div>
+                {% endif %}
+            </div>
+        </div>
+
+  
+    </form>
+{% endblock %}

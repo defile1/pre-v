@@ -1,0 +1,42 @@
+<ul class="product-info">
+    <li class="ib clearfix">
+        <strong>Year</strong>
+        <span>{{ products.year }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Brand</strong>
+        <span>{{ products.brand.title | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Model</strong>
+        <span>{{ products.model | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Reference number</strong>
+        <span>{{ products.reference  }}</span>
+    </li>
+
+    <li class="ib clearfix">
+        <strong>Gender</strong>
+        <span><i class="fa fa-fw fa-{{ "male" if products.gender |lower == "male" else "female"}}"></i>{{ products.gender | String("humanize") }}</span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Price</strong>
+        <span>
+            {% if products.prices.price > 0 %}
+                &pound;{{ products.prices.price | NumberFormat }}
+                {% if products.prices.negotiable %} Negotiable {% endif %}
+            {% endif %}
+            {% if products.prices.POA %} POA {% endif %}
+        </span>
+    </li>
+    <li class="ib clearfix">
+        <strong>Original Box</strong>
+        <span><i class="fa fa-fw fa-{{ "check" if products.with_box else "close"}}"></i>{{ "Yes" if products.with_box else "No"   }}</span>
+    </li>
+
+    <li class="ib clearfix">
+        <strong>With certificate</strong>
+        <span><i class="fa fa-fw fa-{{ "check" if products.authenticity else "close"}}"></i>{{ "Yes" if products.authenticity else "No" }}</span>
+    </li>
+</ul>

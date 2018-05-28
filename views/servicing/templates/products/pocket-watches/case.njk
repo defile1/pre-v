@@ -1,0 +1,16 @@
+<div>
+    <h3 class="ui header">Case</h3>
+    <div class="fields">
+        {{ forms.select('product[case][material]', value=products.case.material, label="Case material", options=Stores.Enums.Products.general.materials) }}
+        {{ forms.input('product[case][diameter]', value=products.case.diameter, label="Case diameter (MM)") }}
+        {{ forms.select('product[case][bezel][material]', value=products.case.bezel.material, label="Bezel material", options=Stores.Enums.Products.general.materials) }}
+    </div>
+    <div class="fields">
+        {{ forms.select('product[case][glass]', value=products.case.glass, label="Glass", options=Stores.Enums.Products.glass) }}
+        {{ forms.select('product[case][crown][crown]', value=products.case.crown.crown, label="Crown", options=Stores.Enums.Products.crown.crown) }}
+        {{ forms.boolean('product[case][waterproof]', value=products.case.waterproof, label="Waterproof") }}
+    </div>
+    <div class="">
+        {{ forms.textarea('product[case][description]', value=products.case.description, label="General condition", class="full-width grid-100", inputClass="autogrow") }}
+    </div>
+</div>

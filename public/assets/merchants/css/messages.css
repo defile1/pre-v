@@ -1,0 +1,88 @@
+.list-message {
+  display: none;
+}
+.list-message h2 {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 20px;
+}
+.list-message h3 {
+  float: left;
+}
+.list-message time {
+  font-size: 1em;
+  display: block;
+  margin-bottom: 10px;
+  float: right;
+  color: #999;
+}
+.list-message .list-message-wrapper ul > li {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.list-message .list-message-wrapper ul > li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.list-message .form-field {
+  margin-bottom: 5px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.list-message:first-child {
+  display: block;
+}
+#list-message-senders > ul {
+  padding: 0;
+}
+#list-message-senders > ul > li {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+#list-message-senders > ul > li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+#list-message-senders > ul > li > a {
+  display: block;
+  padding: 30px;
+  text-decoration: none;
+}
+#list-message-senders > ul > li > a h3 {
+  margin-bottom: 5px;
+}
+#list-message-senders > ul > li > a time {
+  display: block;
+}
+#list-message-senders > ul > li.unread-message h3 {
+  position: relative;
+  display: inline-block;
+  padding-right: 20px;
+}
+#list-message-senders > ul > li.unread-message h3:after {
+  content: "";
+  background: #60beff;
+  width: 10px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border-radius: 100px;
+}
+#list-message-senders > ul > li.selected-message {
+  background: rgba(9,183,68,0.1);
+}
+.mCSB_scrollTools {
+  opacity: 0;
+}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background: #1f1f1f !important;
+  margin-right: 0;
+}
+.mCSB_scrollTools .mCSB_draggerRail {
+  background: transparent;
+}

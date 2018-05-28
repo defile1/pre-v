@@ -1,0 +1,164 @@
+{
+    "categories": [
+        {"key":"Watches", "title": "Watches"},
+        {"key":"Jewellery", "title": "Jewellery", "active": true}
+    ],
+    "class": {
+        "jewellery": [
+            {"key":"necklace", "title": "Necklace"},
+            {"key":"rings", "title": "Rings"},
+            {"Key":"earrings", "title": "Earrings"}
+        ],
+        "watches": [
+            {"key":"watches", "title": "Watches"},
+            {"key":"clocks", "title": "Clocks"},
+            {"key":"pocketwatches", "title": "Pocket watches"},
+            {"key":"parts", "title": "Parts"},
+            {"key":"accessories", "title": "Accessories"}
+        ]
+    },
+    "gender":[
+        {"key":"male", "title": "Male"},
+        {"key":"female", "title": "Female"}
+    ],
+    "yesNo":[
+        {"key":"true", "title": "Yes"},
+        {"key":"false", "title": "No"}
+    ],
+    "status":[
+        {"key":"draft", "title": "Draft"},
+        {"key":"published", "title": "Publish"}
+    ],
+    "general" : {
+        "materials" : [
+            {"key":"stainless_steel", "title": "Stainless Steel"},
+            {"key":"stainless_steel_gold_yellow", "title": "Stainless Steel & Yellow Gold"},
+            {"key":"stainless_steel_gold_rose", "title": "Stainless Steel & Rose Gold"},
+            {"key":"gold_yellow", "title": "Yellow Gold"},
+            {"key":"gold_white", "title": "White Gold"},
+            {"key":"gold_rose", "title": "White Rose"},
+            {"key":"platinum", "title": "Platinum"},
+            {"key":"titanium", "title": "Titanium"},
+            {"key":"tantalum", "title": "Tantalum"},
+            {"key":"silver", "title": "Silver"}
+        ]
+    },
+    "crown" : {
+        "crown" : [
+            {"key":"stainless_steel", "title": "Stainless Steel"},
+            {"key":"gold_yellow", "title": "Yellow Gold"},
+            {"key":"gold_white", "title": "White Gold"},
+            {"key":"gold_rose", "title": "White Rose"},
+            {"key":"platinum", "title": "Platinum"},
+            {"key":"titanium", "title": "Titanium"},
+            {"key":"tantalum", "title": "Tantalum"},
+            {"key":"silver", "title": "Silver"}
+        ]
+    },
+    "glass" : [
+        {"key":"plastic", "title": "Plastic"},
+        {"key":"acrylic", "title": "acrylic"},
+        {"key":"mineral_glass", "title": "Mineral glass"},
+        {"key":"Sapphire_glass", "title": "Sapphire glass"}
+    ],
+    "dial" : {
+        "numerals" : [
+            {"key":"index_markers", "title": "Index markers"},
+            {"key":"arabic_numerals", "title": "Arabic numerals"},
+            {"key":"roman_numerals", "title": "Roman numerals"},
+            {"key":"diamond_dot", "title": "Diamond dot"}
+        ],
+        "dial" : [
+            {"key":"black", "title": "Black"},
+            {"key":"blue", "title": "Blue"},
+            {"key":"bordeaux", "title": "Bordeaux"},
+            {"key":"bronze", "title": "Bronze"},
+            {"key":"brown", "title": "Brown"},
+            {"key":"champagne", "title": "Champagne"},
+            {"key":"gold", "title": "Gold"},
+            {"key":"gold_solid", "title": "Gold (solid)"},
+            {"key":"green", "title": "Green"},
+            {"key":"grey", "title": "Grey"},
+            {"key":"mother_of_pearl", "title": "Mother of pearl"},
+            {"key":"orange", "title": "Orange"},
+            {"key":"pink", "title": "Pink"},
+            {"key":"purple", "title": "Purple"},
+            {"key":"red", "title": "Red"},
+            {"key":"silver", "title": "Silver"},
+            {"key":"silver_solid", "title": "Silver (solid)"},
+            {"key":"transparent", "title": "Transparent"},
+            {"key":"white", "title": "White"},
+            {"key":"yellow", "title": "Yellow"}
+        ],
+        "original": [
+            {"key":"original", "title": "Original"},
+            {"key":"serviced", "title": "Service dial"},
+            {"key":"relumed", "title": "Relumed"},
+            {"key":"refinished", "title": "Refinished"}
+        ]
+    },
+    "strap" : {
+        "material" : [
+            {"key": "aluminium", "title" : "Aluminium"},
+            {"key": "calfskin", "title" : "Calfskin"},
+            {"key": "ceramic", "title" : "Ceramic"},
+            {"key": "crocodile_skin", "title" : "Crocodile skin"},
+            {"key": "gold_steel", "title" : "Gold & Steel"},
+            {"key": "leather", "title" : "Leather"},
+            {"key": "lizard_skin", "title" : "Lizard skin"},
+            {"key": "ostrichskin", "title" : "Ostrichskin"},
+            {"key": "pink_gold", "title" : "Pink Gold"},
+            {"key": "plastic", "title" : "Plastic"},
+            {"key": "platinum", "title" : "Platinum"},
+            {"key": "red_gold", "title" : "Red Gold"},
+            {"key": "rubber", "title" : "Rubber"},
+            {"key": "satin", "title" : "Satin"},
+            {"key": "sharkskin", "title" : "Sharkskin"},
+            {"key": "silver", "title" : "Silver"},
+            {"key": "snake_skin", "title" : "Snake skin"},
+            {"key": "steel", "title" : "Steel"},
+            {"key": "textile", "title" : "Textile"},
+            {"key": "titanium", "title" : "Titanium"},
+            {"key": "white_gold", "title" : "White Gold"},
+            {"key": "yellow_gold", "title" : "Yellow Gold"}
+        ],
+
+        "clasp_material" : [
+            {"key": "aluminium", "title" : "Aluminium"},
+            {"key": "ceramic", "title" : "Ceramic"},
+            {"key": "gold_steel", "title" : "Gold & Steel"},
+            {"key": "pink_gold", "title" : "Pink Gold"},
+            {"key": "plastic", "title" : "Plastic"},
+            {"key": "platinum", "title" : "Platinum"},
+            {"key": "red_gold", "title" : "Red Gold"},
+            {"key": "silver", "title" : "Silver"},
+            {"key": "steel", "title" : "Steel"},
+            {"key": "titanium", "title" : "Titanium"},
+            {"key": "white_gold", "title" : "White Gold"},
+            {"key": "yellow_gold", "title" : "Yellow Gold"}
+        ],
+        "type" : [
+            {"key": "president", "title" : "President"},
+            {"key": "oyster", "title" : "Oyster"},
+            {"key": "jubilee", "title" : "Jubilee"},
+            {"key": "pilot", "title" : "Pilot"},
+            {"key": "navitimer", "title" : "Navitimer"}
+        ],
+        "clasp" : [
+            {"key": "pinbuckle", "title" : "Pin Buckle"},
+            {"key": "doublefoldclasp", "title" : "Double-fold clasp"},
+            {"key": "deploymentclasp", "title" : "Deployment clasp"},
+            {"key": "hiddenfoldclasp", "title" : "Fold clasp"},
+            {"key": "hiddenfoldclasp", "title" : "Fold clasp, hidden"}
+        ]
+    },
+    "caliber" : {
+        "movement" : [
+                {"key" : "automatic", "title" : "Automatic"},
+                {"key" : "manual_wind", "title" : "Manual Wind"},
+                {"key" : "quartz", "title" : "Quartz"}
+
+            ]
+
+    } 
+}

@@ -1,0 +1,20 @@
+<form   method="POST"
+        class="grid-75 no-padding-right right-content form ajax tablet-no-padding"
+        action="./"
+>
+    <div class="ui icon message info">
+        <i class="ui icon facebook"></i>
+        <div class="content">
+            <div class="header">Facebook</div>
+            {% if CurrentUser.facebook.token %}
+                <p>
+                    <strong>Email</strong>: {{ CurrentUser.email }} <br>
+                    <strong>Name</strong>: {{ CurrentUser.persons.name.full }}
+                </p>
+                {# <a href="/account/facebook/unlink/" class="btn btn-primary">Unlink</a> #}
+            {% else %}
+                <a href="/account/facebook" class="btn btn-primary">Connect Using Facebook</a>
+            {% endif %}
+        </div>
+    </div>
+</form>

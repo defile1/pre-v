@@ -1,0 +1,21 @@
+{% extends "./layout.njk" %}
+{% block content %}
+    <div id="page-content">
+        <div class="grid-container">
+            <aside id="sidebar" class="grid-25 tablet-no-padding no-padding-left left-content">
+                <ul>
+                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> About Us</a></li>
+                </ul>
+                {# <ul>
+                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Trusted Checkout</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Trusted Checkout</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Trusted Checkout</a></li>
+                    <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Trusted Checkout</a></li>
+                </ul> #}
+            </aside>
+            <article id="article-content" class="grid-75 tablet-no-padding no-padding-right right-content">
+                {% include "./_pages/"+ page +".njk" %}
+            </article>
+        </div>
+    </div>
+{% endblock %}

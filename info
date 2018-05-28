@@ -1,0 +1,15 @@
+sudo systemctl restart node-app-1 ; sudo systemctl restart node-app-2 ; sudo systemctl restart nginx ; sudo journalctl -u node-app-1 --no-pager
+git pull; sudo systemctl restart node-app-1 node-app-2 nginx ; sudo journalctl --follow -u node-app-1
+git pull;npm i;sudo systemctl restart node-app-1 node-app-2 nginx; sudo journalctl -f
+sudo systemctl restart node-app-1 node-app-2 nginx; sudo journalctl -f
+
+systemctl is-enabled httpd; echo $?
+
+sudo service httpd status
+
+PORT=443 devtool app.js -w
+
+
+ps -aux | less | grep "journalctl"
+sudo journalctl -f
+/opt/deploy/app.sh

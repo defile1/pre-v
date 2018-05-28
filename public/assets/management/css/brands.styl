@@ -1,0 +1,15 @@
+$mobile = 767px
+$tablet = 959px
+.list-brand
+    a
+        span.no-font
+            padding 20px
+        h5
+            margin-bottom 0
+    &:nth-child(5n+1)
+        clear left
+        @media screen and (max-width: $tablet)
+            clear none
+    @media screen and (max-width: $tablet)
+        &:nth-child(2n+1)
+            clear left

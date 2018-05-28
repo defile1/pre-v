@@ -1,0 +1,104 @@
+@import '/css/single-watch.css';
+#upper-product {
+  margin-bottom: 50px;
+}
+#upper-product h1 {
+  font-size: 1.875em;
+  text-transform: none;
+}
+.partial {
+  margin-bottom: 60px;
+}
+.partial:last-child {
+  margin-bottom: 0;
+}
+.partial .product-info > li {
+  border-bottom: 1px solid #a7a7a7;
+  padding: 20px 0;
+}
+.partial .product-info > li strong,
+.partial .product-info > li span {
+  width: 50%;
+  float: left;
+  display: block;
+}
+.partial .product-info > li strong {
+  padding-right: 20px;
+}
+.partial:first-child .product-info {
+  display: block;
+}
+.sub-title {
+  border-bottom: 1px solid #a7a7a7;
+  padding-bottom: 30px;
+}
+.product-price {
+  font-size: 1.875em;
+  display: block;
+}
+.left-product-content {
+  padding-right: 15px;
+}
+.right-product-content {
+  padding-left: 15px;
+}
+#seller-info {
+  background: #fff;
+  margin-top: 65px;
+}
+#seller-info,
+#related-products {
+  padding: 65px 0;
+}
+#seller-contact-details h5 {
+  margin-bottom: 10px;
+  font-size: 1.25em;
+  text-transform: none;
+  font-weight: 400;
+}
+#seller-contact-details p,
+#seller-contact-details ul {
+  font-size: 1.25em;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+#seller-contact-details ul > li {
+  margin-bottom: 30px;
+}
+#seller-contact-details ul > li:last-child {
+  margin-bottom: 0;
+}
+#seller-contact-details ul.contact-info > li {
+  margin-bottom: 0;
+  line-height: 1.61em;
+}
+#quick-seller-info {
+  margin-top: 30px;
+  float: left;
+}
+#quick-seller-info h5 {
+  margin-bottom: 20px;
+  font-size: 0.875em;
+}
+#quick-seller-info p {
+  font-size: 1.25em;
+  border-bottom: 1px solid #a7a7a7;
+  margin-bottom: 35px;
+  padding-bottom: 35px;
+}
+#primary-product-image {
+  background: #fff;
+  box-shadow: 1px 1px 6px 4px rgba(0,1,1,0.06);
+  padding: 50px;
+}
+#single-images > li img {
+  box-shadow: 1px 1px 6px 4px rgba(0,1,1,0.06);
+}
+.single-product h2 {
+  font-size: 1.3em;
+  text-transform: none;
+}
+#product-description p {
+  font-size: 1.25em;
+  font-weight: 300;
+}

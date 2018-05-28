@@ -1,0 +1,37 @@
+    <div class="clearfix watch-images ui images">
+        <h3 class="ui header">
+        Images
+        <span class="ui right floated button manageImages">Manage</span>
+        </h3>
+        {% if products.images %}
+            {% import "../repeats.njk" as forms %}
+            <div class="ui basic theImageSegments">
+                {% if products.images and products.images.length > 0 %}
+                    <div class="ui basic segment leftSegment">
+                        {% set image = products.images[0] %}
+                        <div class="ui left centered big bordered image mainImage">
+                            <img class="main-single-watch-image" src="{{ image.src or Site.noPhoto }}" />
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="ui basic segment rightSegment">
+                    {% for image in products.images %}
+                        <div class="ui left centered image bordered tiny tinyImages">
+                            <img class="main-single-watch-image" src="{{ image.src or Site.noPhoto }}" />
+                            {{ forms.hidden('product[images][][src]', value=image.src, inputClass="" ) }}
+                            {{ forms.hidden('product[images][][alt]', value=image.alt, inputClass="" ) }}
+                            {{ forms.hidden('product[images][][deleted]', value=image.deleted, inputClass="deleteImageInput" ) }}
+                            <a href="#" name="images.{{ loop.index0 }}.deleted" method="delete" class="ui top right attached red label deleteImage hidden"><i class="ui icon cancel"></i></a>
+                            <a href="#" class="ui top left attached label moveImage hidden"><i class="move icon"></i></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <p>No Images uploaded</p>
+        {% endif %}
+    </div>
+    <div class="dropzone-previews" data-autoProcessQueue="true" data-url="upload/"  >
+        <div class="dz-default dz-message"><span>Drop files or click <a href="#">here</a> to upload and <strong>press update</strong>.</span></div>
+    </div>
+    {# <a href="#" class="btn black-btn small-btn right">Manage Images</a> #}

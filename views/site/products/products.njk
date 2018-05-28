@@ -1,0 +1,162 @@
+{% extends "site/layout.njk" %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/javascript/fancybox/jquery.fancybox.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/single-watch.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/site/css/list-watches.css">
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/public/assets/site/javascript/fancybox/jquery.fancybox.min.js"></script>
+{% endblock %}
+{% block content %}
+    <div id="page-content" class="container content single-product">
+        <div id="product-content" class="grid-container">
+            <div id="upper-product" class="clearfix">
+                <div id="product-info" class="grid-50 push-50 tablet-grid-40 tablet-push-60 no-padding-right mobile-no-padding right-product-content clearfix">
+                    <h1 class="title"> {{ products.title | String("humanize") }}</h1>
+                    {% if CurrentUser %}
+                    <h2 class="product-price">
+                        {% if products.prices.POA == true %}
+                            POA
+                           
+                        {% else %}
+                            &pound; {{ products.prices.price | NumberFormat }}
+
+                        {% endif %}
+                    </h2>
+                    <div id="quick-seller-info">
+                        <u><h5>Seller Information</h5></u>
+                        <p>
+                            {{ products.owners[0].companies.name }}
+                            <i class="{{ products.owners[0].persons.country | lower }} large flag"></i>
+                            <br > {% if products.owners[0].isOpen %}<small><i class="fa fa-clock-o fa-fw"></i> Open now!</small>{% endif %}
+                        </p>
+                        
+                        <a href="#seller-info" class="btn black-btn large-btn">Contact Seller</a>
+                    </div>
+
+                    <div id="product-description" class="">
+                        {% if products.description %}
+                            <h3 class="sub-title">Product Description</h3>
+                            <p>{{ products.description |nl2br | safe }}</p>
+                        {% else %}
+                            <p>&nbsp;</p>
+                        {% endif %}
+                    
+                </div>
+                {% else %}
+                <p> Please Sign in to view price information. </p>
+                {% endif %}</div>
+                <div class="grid-50 pull-50 tablet-grid-60 tablet-pull-40 no-padding-left left-product-content mobile-no-padding clearfix">
+                    <div id="primary-product-image" class="">
+                        <a href="{{ (products.primaryImage.src) }}" data-fancybox="gallery" class="cover-bg cover-product-image" style="background-image: url('{{ (products.primaryImage.src) or Site.noPhoto }}');"></a>
+                        {# <img class="position-relative vertical-align" src="{{ products.primaryImage.src }}" /> #}
+                    </div>
+                    <ul id="single-images" class="">
+                        {% for image in products.images %}
+                            <li>
+                                <a data-fancybox="gallery" href="{{ image.src }}" class="no-font">
+                                    <span class="cover-bg cover-product-image" style="background-image: url('{{ (image.src) or Site.noPhoto }}');"></span>
+                                    {# <img class="position-relative vertical-align" src="{{ image.src }}"> #}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <script type="text/javascript">
+                        $('#single-images').on('click', 'a', function(){
+                            var link = $(this).attr('href');
+                            var $target = $('#primary-product-image .cover-product-image');
+                            $target.css({ 'background-image' : 'url('+link+')' });
+                            $target.attr( 'href', link );
+                            $(this).removeAttr('data-fancybox');
+                            $(this).parent().siblings('li').find('a').attr('data-fancybox', 'gallery');
+                            return false;
+                        })
+                        .find('li:first-child').find('a').removeAttr('data-fancybox');
+                    </script>
+
+                </div>
+            </div>
+        {% if products.category | lower == "watches" %}
+        <div class="">
+            <div class="grid-50">
+                {% include "./partial/details.njk" %}
+            </div>
+            <div class="conditions grid-50">
+               <left> <u><h5>Conditions</h5></u></left>
+                <div>
+                    <div><span class="labeled">Case</span>      <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.case.condition }}"></div> </div>
+                    <div><span class="labeled">Bezel</span>     <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.case.bezel.condition }}"></div> </div>
+                    <div><span class="labeled">Crown</span>     <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.case.crown.condition }}"></div> </div>
+                    <div><span class="labeled">Dial</span>      <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.dial.dial_condition }}"></div> </div>
+                    <div><span class="labeled">Bracelet</span>  <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.strap.bracelet.condition }}"></div> </div>
+                    <div><span class="labeled">Clasp</span>     <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.strap.clasp.condition }}"></div> </div>
+                    <div><span class="labeled">Strap</span>     <div class="ui star rating" data-interactive="false" data-max-rating="5" data-rating="{{ products.strap.condition }}"></div> </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        </div>
+{% if CurrentUser %}
+        <div id="seller-info" class="">
+            <div class="grid-container">
+                <u><h2>Seller</h2></u>
+                <div id="seller-contact-details" class="clearfix">
+                    <div class="grid-70 no-padding-left tablet-no-padding clearfix">
+                        <div class="grid-30 tablet-grid-50 mobile-no-padding no-padding-left">
+                            <h5>{{ products.owners[0].companies.name }}</h5>
+                            {% if products.owners[0].companies.image.src %}
+                                <img src="{{ products.owners[0].companies.image.src or Site.noPhoto }}" class="companyLogo" >
+                            {% endif %}
+                        </div>
+                        <div class="grid-70 tablet-grid-50 mobile-no-padding no-padding-right">
+                            {% if products.owners[0].add1 %}
+                                <h5>Address</h5>
+                                <p>{{ products.owners[0].add1 }}</p>
+                            {% endif %}
+                            <u><h5>Contact Info</h5></u>
+                            <ul class="contact-info">
+                                <li><strong>Email:</strong> {{ products.owners[0].companies.email }}</li>
+                                <li><strong>Tel:</strong> {{ products.owners[0].companies.tel }}</li>
+                                <li><strong>Web:</strong> {{ products.owners[0].companies.website }}</li>
+                            </ul>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="grid-30 no-padding-right tablet-no-padding">
+                        <ul>
+                            {# <li><i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i> Trusted Seller Since {{products.owners[0].createdAt | date("Y")}}</li> #}
+                            {% if products.owners[0].isOpen %}<li><i class="fa fa-clock-o fa-fw"></i> Open now!</li>{% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+       
+
+{% else %}
+<p>Login to see Company Information. </p>
+ </div>
+ {% endif %}
+        <div id="related-products" class="grid-container">
+            <h2>You may also be interested in</h2>
+            {% if related.length %}
+                <ul class="watches clearfix">
+                    {% for product in related %}
+                        <li class="watch grid-20 tablet-grid-50 mobile-grid-50">
+                            <a href="/{{ product.slug }}" class="clearfix">
+                                {# <span class="watch-image"><img class="full-width" src="{{ product.images and product.images[0].src or Site.noPhoto }}" /></span> #}
+                                <div class="watch-image"><span class="the-watch-image" style="background-image: url({{ product.images and product.images[0].src or Site.noPhoto }});"></span></div>
+                                <div class="watch-content">
+                                    <h3>{{ product.title }}</h3>
+                                    <span class="divider"></span>
+                                    {# <p>{{ product.description | truncate(70)}}</p> #}
+                                    <span class="watch-price">&pound; {{ product.prices.price | NumberFormat }}</span>
+                                </div>
+                                {# <span class="btn btn-white btn-small left">View Details</span> #}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="">
+    <div class="fields">
+        {{ forms.input('product[title]',label="Title *" , value=products.title, placeholder="Product title", class="fluid") }}
+        {{ forms.select('product[class]', value=products.class, label="Class", options=Stores.Enums.Products.class[products.category | lower], key="_id", text="title", inputClass="classes") }}
+    </div>
+    <div class="fields">
+        {# {{ forms.select('product[category]', value=products.category, label="Category*", options=products.enum("category")) }} #}
+        {{ forms.input('product[year]', value=products.year,label="Year of Manufacture") }}
+        {{ forms.select('product[gender]', value=products.gender,label="Gender*", options=Stores.Enums.Products.gender) }}
+    </div>
+
+</div>

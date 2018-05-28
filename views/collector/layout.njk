@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% import "./templates/repeats.njk" as forms %}
+
+    <title>{{ title }} - Pre 2000 - Admin</title>
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/css/resets.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/assets/merchants/javascript/jquery/jquery-ui-1.12.1/jquery-ui.min.css">
+    {# <link rel="stylesheet" type="text/css" href="/public/assets/merchants/css/unsemantic.css"> #}
+    {# <link rel="stylesheet" type="text/css" href="/public/assets/merchants/_mix/fontello/css/aw.css"> #}
+    {# <link rel="stylesheet" type="text/css" href="/public/assets/merchants/css/style.css"> #}
+    {% block css %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    {# <link rel='stylesheet' id='ut-fontawesome-css'  href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?e9dfc4" type='text/css' media='all' /> #}
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <script type="text/javascript" src="/public/assets/merchants/javascript/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/jquery/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/nunjucks/nunjucks.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/moment/moment.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/_mix/semantic/semantic.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/mongoose/mongoose.min.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/jsonpath/jsonpath.js"></script>
+    {# <script type="text/javascript" src="/javascript/store/store.min.js"></script> #}
+    <script type="text/javascript" src="/public/assets/management/javascript/serializeJSON.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/site.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/ajax.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/stores.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/dropzone.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/notifications.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/dropzone/dropzone.js"></script>
+    <script type="text/javascript" src="/public/assets/merchants/javascript/autogrow.js"></script>
+    {% block js %}{% endblock %}
+    <script type="text/javascript" src="/public/assets/merchants/javascript/ready.js"></script>
+    {% block jsready %}{% endblock %}
+
+
+    <script type="text/javascript"> Dropzone.autoDiscover = false; </script>
+</head>
+<body id="layout">
+
+    <div class="ui top attached menu inverted">
+        <a href="/" class="item ui logo icon image grey active"><img src="/public/assets/merchants/images/logo.png" /></a>
+        <span class="item active green identifier">
+            {% if CurrentUser.isAdmin %} <a href="/management/"> {% endif %}
+            Merchants
+            {% if CurrentUser.isAdmin %} </a> {% endif %}
+        </span>
+        <div class="ui menu icon inverted right">
+            {# <a class="item" href="/collector/messages/"><i class="icon large envelope"></i></a> #}
+            <a class="item" href="#" id="notifications"><i class="icon large bell"></i> <span class="ui mini label circular red">0</span></a>
+            <a class="item" href="/account/profile/"><i class="icon large user"></i></a>
+            <a class="item" href="/account/logout/"><i class="icon large sign out"></i></a>
+            <a class="item right" id="sidebar"><i class="sidebar icon"></i> <span class="hideMobile">Menu</span></a>
+        </div>
+
+
+    </div>
+    <div class="ui bottom attached mainWrapper mobile noNotifications">
+            {# sidebar 1 Notifications #}
+            {% include "../common/notifications.njk" %}
+
+            <div class="main-container">
+                <div class="ui basic segment">
+                    <div id="pager">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+
+            </div>
+
+            {# sidebar 1 main menu #}
+            <div id="theSideBar" class="ui inverted right vertical menu mmSideBar" style="z-index: 3;">
+                <a class="item" href="/collector/"><i class="home icon "></i>Dashboard</a>
+                {% if env and env == "development" %}
+                    <a class="item" href="/collector/offers/"><i class="shop icon "></i> Offers</a>
+                {% endif %}
+                <a href="" class="item"><i class="tasks icon "></i>Manage Collection</a>
+                
+                   
+                </div>
+            </div>
+
+
+    </div>
+    <script type="text/javascript">
+        try{
+            Stores = {{Stores | dump | safe }}
+        }catch(e){}
+
+
+    </script>
+
+
+    {% include "account/login-ajax.njk" %}
+    {% include "./clones.njk" %}
+
+    <style type="text/css">
+
+        #layout .ui.comments{ max-width: auto; }
+        .main-container{
+            transition: 0.5s all;
+        }
+        .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before{
+            background: rgba(0,0,0,.15);
+        }
+        #layout .clone{display: none!important;}
+        .ui.vertical.menu .item i.icon.left,
+        .ui.vertical.menu .item>i.icon.left{
+            float: left;
+            margin: 0 .5em 0 0;
+        }
+
+        .notifications .list li.info h3{color: blue;}
+        .notifications .list li.error h3{color: #900;}
+        .notifications .list li.success h3{color: green;}
+
+        .validationError{border-color: #900!important;}
+        .validationError.control__visible_part{ border: 1px solid; }
+
+        #layout > .mainWrapper{
+            display: flex;
+            height: calc( 100% - 47px);
+        }
+        #layout > .mainWrapper.noNotifications .main-container,
+        #layout > .mainWrapper.noSidebar .main-container{
+            width: 85%;
+        }
+        #layout > .mainWrapper #theNotifications{
+            left: 0%;
+        }
+        #layout > .mainWrapper.noNotifications #theNotifications{
+            left: -15%;
+            width: 0%;
+            overflow: hidden;
+        }
+        #layout > .mainWrapper #theSideBar{
+            right: 0%;
+        }
+        #layout > .mainWrapper.noSidebar #theSideBar{
+            right: -15%;
+            width: 0%;
+            overflow: hidden;
+        }
+        #layout > .mainWrapper.noSidebar.noNotifications .main-container{
+            width: 100%;
+        }
+
+        #layout > .mainWrapper .mmSideBar{
+            transition: all 0.5s;
+            width: 15%;
+            margin: 0;
+            border-radius: 0;
+            position: relative;
+            overflow: auto;
+        }
+        #layout > .mainWrapper .main-container{
+            width: 70%;
+            overflow: auto;
+        }
+        #layout .ui.top.menu{
+            border-radius: 0;
+        }
+        @media only screen and (max-width: 1024px) {
+            #layout .ui.top.menu > .identifier{
+                display: none;
+            }
+            #layout > .mainWrapper.mobile .main-container{
+                width: 100%;
+            }
+            #layout > .mobile .mmSideBar{
+                width: 90%;
+                position: absolute;
+                height: calc(100% - 47px);
+                opacity:0;
+            }
+
+            .fields {
+                flex-wrap: wrap;
+            }
+            .fields .ui.selection.dropdown,
+            .fields .field {
+                min-width: auto!important;
+            }
+            .fields .field{
+                width: 50%!important;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{# {% include "../merchants/product-items.njk" %} #}
+{% if products and products.length %}
+    <div class="ui cards">
+        {% for product in products %}
+            <a class="ui card" href="/management/products/{{product.id or product._id}}/">
+                <div class="ui image fluid raised">
+                    <span title="status" class="ui ribbon label {{ "green" if product.status == "published" else "red"}}">{{product.status}}</span>
+                    <img src="{{ product.images[0].src or Site.noPhoto }}" />
+                </div>
+                <div class="content">
+                    <div class="header">{{ product.title }}</div>
+                    <div class="description">{{ product.description | truncate(30) }}</div>
+                </div>
+                <div class="extra content">
+                    <span class="left floated">
+                    {{product.owners[0].email}}
+                    </span>
+                    <span class="right floated">
+                        {% if product.prices.POA === true %}
+                            POA
+                        {% else %}
+                            <span class="ui label">
+                                <span class="icon">&pound;</span> {{ product.prices.price | NumberFormat }}
+                            </span>
+                        {% endif %}
+                    </span>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <i>There are no products to display.</i>
+{% endif %}

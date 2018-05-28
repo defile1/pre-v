@@ -1,0 +1,28 @@
+{% extends "./layout.njk" %}
+{% block css %}<link rel="stylesheet" type="text/css" href="/public/assets/management/css/brands.css">{% endblock %}
+{% block content %}
+    <div class="ui menu">
+        <div class="item">
+            <h1>Find a Watch Serial Or Movement Number.</h1>
+        </div>
+        {# <form method="post" id="search-form" action="/" class="ui form item"> #}
+            {# {{ forms.input('search', label=false, class="ui icon input", icon="search") }} #}
+        {# </form> #}
+     
+    </div>
+    <div class="ui block clearfix">
+        <div class="ui cards">
+            
+            
+                <a class="ui card" href="./{{ brand.id }}/">
+                    <div class="ui image fluid raised">
+                        <img src="{{ brand.image.src or Site.noPhoto }}" />
+                    </div>
+                    <div class="content">
+                        <div class="header">{{ brand.title }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
